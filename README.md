@@ -10,6 +10,8 @@ Cette API permet à l'utilisateur de récupérer les horaires RATP (RER/Metro) e
 
 ## REST
 
+    API server : http://api-ratp.pierre-grimaud.fr
+
 L'API est principalement RESTful. Les données sont exposées sous la forme d'URI qui représentent des ressources et peuvent être récupérés via des clients HTTP (comme les navigateurs web).
 
 ## Limitation
