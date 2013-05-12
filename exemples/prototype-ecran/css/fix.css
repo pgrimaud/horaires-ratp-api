@@ -9,7 +9,7 @@ table{height:100%;margin-bottom:0 !important;}
 .td2-header{vertical-align:middle !important;background-color:#555b69;font-size:50px;color:white !important;font-weight:bold;text-align:right!important;}
 .td2-header p{margin-top:10px;margin-right:40px;}
 .bg-tr{background-color:#d6dcd8;}
-.tr-normal{height:14%;}
+.tr-normal{height:13%;max-height:13%;}
 .tr-normal td{vertical-align:middle;!important}
 .tr-normal .td1 p{color:black;font-family:Verdana;font-weight:bold;font-size:22px;}
 .tr-normal .td2{width:10%;}
