@@ -71,7 +71,7 @@ Ces requêtes permettent de récupérer les horaires des 6 prochains trains d'un
 
 *Fichié retourné* [Lien](https://github.com/pgrimaud/horaires-ratp-api/blob/master/exemples/horaires.json)
 
-    {"ligne":"b","station":"arcueil cachan","horaires":[{"id":"EKLI","terminus":"Aeroport Ch.De Gaulle 2","horaire":"Train \u00e0 quai"},{"id":"EFLA","terminus":"Aeroport Ch.De Gaulle 2","horaire":"Train sans arr\u00eat"},{"id":"ICAR","terminus":"Mitry-Claye","horaire":"17:18"},{"id":"EKLI","terminus":"Aeroport Ch.De Gaulle 2","horaire":"17:25"},{"id":"EFOC","terminus":"Aeroport Ch.De Gaulle 2","horaire":"Train sans arr\u00eat"},{"id":"ICRE","terminus":"Mitry-Claye","horaire":"17:34"}]}
+    {"destination": "Charles-de-Gaulle Mitry-Claye","ligne":"b","station":"arcueil cachan","horaires":[{"id":"EKLI","terminus":"Aeroport Ch.De Gaulle 2","horaire":"Train \u00e0 quai"},{"id":"EFLA","terminus":"Aeroport Ch.De Gaulle 2","horaire":"Train sans arr\u00eat"},{"id":"ICAR","terminus":"Mitry-Claye","horaire":"17:18"},{"id":"EKLI","terminus":"Aeroport Ch.De Gaulle 2","horaire":"17:25"},{"id":"EFOC","terminus":"Aeroport Ch.De Gaulle 2","horaire":"Train sans arr\u00eat"},{"id":"ICRE","terminus":"Mitry-Claye","horaire":"17:34"}]}
     
 ## Feedback
 
