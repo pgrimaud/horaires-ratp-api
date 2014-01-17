@@ -1,0 +1,38 @@
+{
+	"destination": "Charles-de-Gaulle Mitry-Claye",
+	"ligne": "b",
+	"station": "arcueil cachan",
+	"horaires":
+	[
+		{
+			"id": "EFLA",
+			"terminus": "Aeroport Ch.De Gaulle 2",
+			"horaire": "Train sans arr\u00eat"
+		},
+		{
+			"id": "ICAR",
+			"terminus": "Mitry-Claye",
+			"horaire": "17:04"
+		},
+		{
+			"id": "EKLI",
+			"terminus": "Aeroport Ch.De Gaulle 2", 
+			"horaire": "17:10"
+		}, 
+		{
+			"id": "EFLA", 
+			"terminus": "Aeroport Ch.De Gaulle 2", 
+			"horaire": "Train sans arr\u00eat"
+		},
+		{
+			"id": "ICAR",
+			"terminus": "Mitry-Claye",
+			"horaire": "17:19"
+		},
+		{
+			"id": "EKLI",
+			"terminus": "Aeroport Ch.De Gaulle 2",
+			"horaire": "17:25"
+		}
+	]
+}

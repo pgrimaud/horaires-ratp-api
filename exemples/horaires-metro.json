@@ -1,0 +1,24 @@
+{
+	"destination": "Ch\u00e2teau de Vincennes",
+	"ligne": "1",
+	"station": "hotel de ville",
+	"horaires":
+	[
+		{
+			"terminus":"Ch\u00e2teau de Vincennes",
+			"attente": "2 mn"
+		},
+		{
+			"terminus":"Ch\u00e2teau de Vincennes",
+			"attente": "4 mn"
+		},
+		{
+			"terminus":"Ch\u00e2teau de Vincennes",
+			"attente": "6 mn"
+		}, 
+		{
+			"terminus":"Ch\u00e2teau de Vincennes",
+			"attente": "8 mn"
+		}
+	]
+}

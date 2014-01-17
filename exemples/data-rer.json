@@ -1,0 +1,12 @@
+{
+	"ligne" : "b",
+	"destinations":
+	[
+		{
+			"destination":"cdg+mitry"
+		},
+		{
+			"destination":"robinson+st+remy"
+		}
+	]
+}
