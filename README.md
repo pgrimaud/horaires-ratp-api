@@ -116,11 +116,11 @@ Ces requêtes permettent de récupérer les temps d'attente des 4 prochains trai
 	
 ## Requêtes Data Trafic
 
-Ces requêtes permettent de récupérer le trafic du RER ou du metro.
+Ces requêtes permettent de récupérer l'état du trafic du RER ou du metro.
 
 *Construction d'une requête*
 
-    GET date / trafic / +Transport
+    GET data / trafic / +Transport
     
     Host: api-ratp.pierre-grimaud.fr
     
