@@ -8,7 +8,8 @@
 	v1.3 - 20130913 - Ajout de la ligne 3, 3bis et 4 du métro
 	v1.4 - 20130917 - Ajout de la ligne 5 du métro
 	v1.5 - 20131025 - Ajout de la ligne 6, 7, 7bis, 8, 9, 10, 11, 12, 13, 14 du métro
-	v1.6 - 20140110 - Ajout des requêtes sur le trafic
+	v1.6 - 20140110 - Ajout des requêtes de l'état du trafic
+	v1.7 - 20150612 - Ajout des requêtes de l'état du trafic pour le Tramway
 	
 ## Introduction 
 
@@ -124,7 +125,7 @@ Ces requêtes permettent de récupérer l'état du trafic du RER ou du metro.
     
     Host: api-ratp.pierre-grimaud.fr
     
-    Transport : metro | rer
+    Transport : metro | rer | tram
 
 *Example de requête Horaire METRO*
 
@@ -135,7 +136,7 @@ Ces requêtes permettent de récupérer l'état du trafic du RER ou du metro.
 
 *Fichier retourné* [Lien](https://github.com/pgrimaud/horaires-ratp-api/blob/master/exemples/data-trafic.json)
 
-    {"trafic":"perturbation","perburbations":{"RER A":"Travaux de maintenance ce soir."}}
+    {"trafic":"perturbation","perburbations":[{"RER A":"Travaux de maintenance ce soir."}]}
 	
 ## Feedback
 
