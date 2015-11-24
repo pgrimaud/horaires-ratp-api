@@ -21,8 +21,9 @@ L'API est principalement RESTful. Les données sont exposées sous la forme d'UR
 
 Type de données |  Description
 --- | ---
- [Informations lignes](#requêtes-lignes) | Récupération les données relatives aux Rers, Métros et Tramways. (nom et destinations)
-
+ [Lignes](#lignes) | Récupération les données relatives aux Rers, Métros et Tramways. (nom et destinations)
+ [Stations](#stations) | Récupération les stations d'une ligne de Rer, Métro ou Tramway.
+ 
 ## Format
 
 De base, les données renvoyées sont disponibles au format JSON. Mais il est possible de les récupérer au format XML en ajoutant à chaque requête le paramètre **format**.
@@ -66,12 +67,12 @@ De base, les données renvoyées sont disponibles au format JSON. Mais il est po
 
 #Données
 
-## Informations lignes
+## Lignes
 
 
 Ces requêtes permettent de récupérer les données relatives aux Rers, Métros et Tramways. (nom et destinations)
 
-	/{TypeLigne}
+	http://api-ratp.pierre-grimaud.fr/v2/{TypeLigne}
 	
 Paramètre | Valeur possible | Description
 --- | --- | ---
@@ -121,6 +122,57 @@ Paramètre | Valeur possible | Description
         	"call": "GET /rers"
     	}
 	}
+	
+## Stations
+
+Ces requêtes permettent de récupérer les stations d'une ligne de Rer, Métro ou Tramway.
+
+	http://api-ratp.pierre-grimaud.fr/v2/{TypeLigne}/{LigneId}/stations
+	
+Paramètre | Valeur possible | Description
+--- | --- | ---
+**TypeLigne** | **rers**, **metros** ou **tramways** | Le type de ligne dont vous souhaitez avoir les informations.
+**LigneId** | Valeur **line** d'une requête [Informations lignes](#informations-lignes) | Le nom de la ligne du type de ligne spécifié.
+
+*Exemple :*
+
+	GET http://api-ratp.pierre-grimaud.fr/v2/metros/3B/stations
+	
+	{
+        "response": {
+            "stations": [
+                {
+                    "id": "118",
+                    "name": "Gambetta",
+                    "slug": "gambetta"
+                },
+                {
+                    "id": "119",
+                    "name": "Pelleport",
+                    "slug": "pelleport"
+                },
+                {
+                    "id": "120",
+                    "name": "Porte des Lilas",
+                    "slug": "porte+des+lilas"
+                },
+                {
+                    "id": "121",
+                    "name": "Saint-Fargeau",
+                    "slug": "saint+fargeau"
+                }
+            ]
+        },
+        "_meta": {
+            "version": "2",
+            "date": "2015-11-25T00:14:45+01:00",
+            "call": "GET /metros/3B"
+        }
+    }
+
+
+
+---
 	
 ## Feedback
 
