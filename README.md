@@ -21,10 +21,10 @@ L'API est principalement RESTful. Les données sont exposées sous la forme d'UR
 
 Type de données |  Description
 --- | ---
- [Lignes](#lignes) | Récupération les données relatives aux Rers, Métros et Tramways. (nom et destinations)
- [Stations](#stations) | Récupération les stations d'une ligne de Rer, Métro ou Tramway.
- [Horaires](#horaires) | Récupération les horaires en temps réel d'une station de Rer, Métro ou Tramway.
- 
+ [Lignes](#lignes) | Récupération des données relatives aux Rers, Métros et Tramways. (nom et destinations)
+ [Stations](#stations) | Récupération des stations d'une ligne de Rer, Métro ou Tramway.
+ [Horaires](#horaires) | Récupération des horaires en temps réel d'une station de Rer, Métro ou Tramway.
+ [Trafic](#trafic) | Récupération des données de trafic sur l'ensemble du réseau ferré RATP. 
 ## Format
 
 De base, les données renvoyées sont disponibles au format JSON. Mais il est possible de les récupérer au format XML en ajoutant à chaque requête le paramètre **format**.
@@ -77,7 +77,7 @@ Ces requêtes permettent de récupérer les données relatives aux Rers, Métros
 	
 Paramètre | Valeur possible | Description
 --- | --- | ---
-**TypeLigne** | **rers**, **metros** ou **tramways** | Le type de ligne dont vous souhaitez avoir les informations.
+**TypeLigne** | **rers**, **metros** ou **tramways** | Le type de transport dont vous souhaitez avoir les informations.
 
 *Exemple :*
 
@@ -132,8 +132,8 @@ Ces requêtes permettent de récupérer les stations d'une ligne de Rer, Métro 
 	
 Paramètre | Valeur possible | Description
 --- | --- | ---
-**TypeLigne** | **rers**, **metros** ou **tramways** | Le type de ligne dont vous souhaitez avoir les informations.
-**LigneId** | Valeur **line** d'une requête [lignes](#lignes) | Le nom de la ligne du type de ligne spécifié.
+**TypeLigne** | **rers**, **metros** ou **tramways** | Le type de transport dont vous souhaitez avoir les informations.
+**LigneId** | Valeur **line** d'une requête [lignes](#lignes) | Le nom de la ligne du type de transport spécifié.
 
 *Exemple :*
 
@@ -180,8 +180,8 @@ Ces requêtes permettent de récupérer les temps d'attente des prochains trains
 	
 Paramètre | Valeur possible | Description
 --- | --- | ---
-**TypeLigne** | **rers**, **metros** ou **tramways**. | Le type de ligne dont vous souhaitez avoir les informations.
-**LigneId** | Valeur **line** d'une requête [lignes](#lignes). | Le nom de la ligne du type de ligne spécifié.
+**TypeLigne** | **rers**, **metros** ou **tramways**. | Le type de transport dont vous souhaitez avoir les informations.
+**LigneId** | Valeur **line** d'une requête [lignes](#lignes). | Le nom de la ligne du type de transport spécifié.
 **StationId** | Valeur **id** ou **slug** d'une requête [stations](#stations). | L'id ou l'indicatif de la station désirée.
 **DestinationId** | Valeur **id** ou **slug** d'une requête [lignes](#lignes). | L'id ou l'indicatif de la destination désirée.
 
@@ -230,6 +230,40 @@ Paramètre | Valeur possible | Description
             "version": "2",
             "date": "2015-11-25T23:30:52+01:00",
             "call": "GET /metros/8/stations/275?destination=23"
+        }
+    }     ```
+
+## Trafic
+
+Ces requêtes permettent de récupérer le trafic du réseau ferré RATP. Il est possible d'affiner la recherche en fonction du type de transport ou de la ligne.
+
+	http://api-ratp.pierre-grimaud.fr/v2/trafic/({TypeLigne}/{LigneId})
+	
+Paramètre | Utilisation | Valeur possible | Description
+--- | --- | --- | ---
+**TypeLigne** | (optionnel, requis si **LigneId** est spécifié) | **rers**, **metros** ou **tramways**. | Le type de transport dont vous souhaitez avoir les informations.
+**LigneId** | (optionnel)  | Valeur **line** d'une requête [lignes](#lignes). | Le nom de la ligne du type de transport spécifié.
+
+
+*Exemple :*
+
+	GET http://api-ratp.pierre-grimaud.fr/v2/traffic/metros/1
+	
+	{
+        "response": {
+            "metros": [
+                {
+                    "line": "1",
+                    "slug": "normal_trav",
+                    "title": "Travaux",
+                    "message": "Ts les jours l'arrêt n'est pas marqué à Louvre-Rivoli jusqu'au 25/11/15. (travaux de rénovation)"
+                }
+            ]
+        },
+        "_meta": {
+            "version": "2",
+            "date": "2015-11-25T00:42:19+01:00",
+            "call": "GET /traffic/metros/1"
         }
     }
 
