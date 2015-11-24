@@ -23,6 +23,7 @@ Type de données |  Description
 --- | ---
  [Lignes](#lignes) | Récupération les données relatives aux Rers, Métros et Tramways. (nom et destinations)
  [Stations](#stations) | Récupération les stations d'une ligne de Rer, Métro ou Tramway.
+ [Horaires](#horaires) | Récupération les horaires en temps réel d'une station de Rer, Métro ou Tramway.
  
 ## Format
 
@@ -132,7 +133,7 @@ Ces requêtes permettent de récupérer les stations d'une ligne de Rer, Métro 
 Paramètre | Valeur possible | Description
 --- | --- | ---
 **TypeLigne** | **rers**, **metros** ou **tramways** | Le type de ligne dont vous souhaitez avoir les informations.
-**LigneId** | Valeur **line** d'une requête [Informations lignes](#informations-lignes) | Le nom de la ligne du type de ligne spécifié.
+**LigneId** | Valeur **line** d'une requête [lignes](#lignes) | Le nom de la ligne du type de ligne spécifié.
 
 *Exemple :*
 
@@ -171,6 +172,66 @@ Paramètre | Valeur possible | Description
     }
 
 
+## Horaires
+
+Ces requêtes permettent de récupérer les temps d'attente des prochains trains d'une ligne de Rer, Métro ou Tramway en fonction de la destination et de la station.
+
+	http://api-ratp.pierre-grimaud.fr/v2/{TypeLigne}/{LigneId}/stations/{StationId}?destination={DestinationId}
+	
+Paramètre | Valeur possible | Description
+--- | --- | ---
+**TypeLigne** | **rers**, **metros** ou **tramways**. | Le type de ligne dont vous souhaitez avoir les informations.
+**LigneId** | Valeur **line** d'une requête [lignes](#lignes). | Le nom de la ligne du type de ligne spécifié.
+**StationId** | Valeur **id** ou **slug** d'une requête [stations](#stations). | L'id ou l'indicatif de la station désirée.
+**DestinationId** | Valeur **id** ou **slug** d'une requête [lignes](#lignes). | L'id ou l'indicatif de la destination désirée.
+
+*Exemple :*
+
+	GET http://api-ratp.pierre-grimaud.fr/v2/metros/8/stations/daumesnil?destination=balard
+	ou
+	GET http://api-ratp.pierre-grimaud.fr/v2/metros/8/stations/275?destination=23
+	
+	{
+        "response": {
+            "informations": {
+                "destination": {
+                    "id": "23",
+                    "name": "Balard",
+                    "slug": "balard"
+                },
+                "line": "8",
+                "type": "metro",
+                "station": {
+                    "id": "275",
+                    "name": "Daumesnil",
+                    "slug": "daumesnil"
+                }
+            },
+            "schedules": [
+                {
+                	"destination": "Balard",
+                	"message": "5 mn"
+            	},
+            	{
+                	"destination": "Balard",
+                	"message": "14 mn"
+            	},
+            	{
+            	    "destination": "Balard",
+            	    "message": "24 mn"
+            	},
+            	{
+            	    "destination": "Balard",
+            	    "message": "32 mn"
+            	}
+            ]
+        },
+        "_meta": {
+            "version": "2",
+            "date": "2015-11-25T23:30:52+01:00",
+            "call": "GET /metros/8/stations/275?destination=23"
+        }
+    }
 
 ---
 	
