@@ -2,141 +2,126 @@
 
 ### Changelog
 
-	v1.0 - 20130512 - Création de l'API
-	v1.1 - 20130910 - Ajout de la ligne 1 du métro
-	v1.2 - 20130912 - Ajout de la ligne 2 du métro
-	v1.3 - 20130913 - Ajout de la ligne 3, 3bis et 4 du métro
-	v1.4 - 20130917 - Ajout de la ligne 5 du métro
-	v1.5 - 20131025 - Ajout de la ligne 6, 7, 7bis, 8, 9, 10, 11, 12, 13, 14 du métro
-	v1.6 - 20140110 - Ajout des requêtes de l'état du trafic
-	v1.7 - 20150612 - Ajout des requêtes de l'état du trafic pour le Tramway
+	v2.0 - 20151124 - Refonte de l'API
 	
 ## Introduction 
 
-Cette API permet à l'utilisateur de récupérer les horaires RATP (RER/Metro) en temps réel à un arrêt défini.
+Cette API permet à l'utilisateur de récupérer les horaires RATP (RER, Metro et Tramway) en temps réel à un arrêt défini.
 
 ## REST
 
-    API server : http://api-ratp.pierre-grimaud.fr
+    API server : http://api-ratp.pierre-grimaud.fr/v2
 
-L'API est principalement RESTful. Les données sont exposées sous la forme d'URI qui représentent des ressources et peuvent être récupérés via des clients HTTP (comme les navigateurs web).
+L'API est principalement RESTful. Les données sont exposées sous la forme d'URI qui représentent des ressources et peuvent être récupérées via des clients HTTP (comme les navigateurs web).
 
 ## Limitation
-
-Le nombre de requêtes journalières est fixé à 1000 et il n'est possible de faire qu'une toutes les 15 secondes. Un sercice d'authentification pourrait être développé pour un accès total et illimité à l'API.
+**Nouveauté** : Le nombre de requêtes journalières n'est plus limité. Cependant, un cache serveur de 15 secondes a été mis en place.
 
 ## Données
 
-Les données sont disponible pour la ligne A et B du RER et pour certaines stations. (Lignes de Metro sont à venir dans une prochaine version)
+Les données sont disponibles pour :
 
-## Requêtes data (RER et METRO)
+* **Metro** (1, 2, 3bis, 4, 5, 6, 7, 7bis, 8, 9, 10, 11, 12, 13 et 14)
 
-Ces requêtes permettent de récupérer diverses informations d'une ligne de RER ou de METRO. Les paramètres doivent être **urlencoded**.
+* **RER** (A et B)
 
-*Construction d'une requête*
+* ~~Tramways~~ (Refonte en cours)
 
-    GET Host+ /data/ +Type+ / +Transport+ / +Ligne
-    
-    Host: api-ratp.pierre-grimaud.fr
-    
-    Type : destinations | stations
-    Transport : rer | metro
-    Ligne : a | b pour rer, 1 | 2 | 3 | 3b | 4 | 5 | 6 | 7 | 7b | 8 | 9 | 10 | 11 | 12 | 13 | 14 pour metro
 
-*Example de requête data RER* 
+## Format
 
-    GET /data/destinations/rer/a HTTP/1.1
-    
-    Host: api-ratp.pierre-grimaud.fr
-    Date: Sun, 12 May 2013 16:59:24 GMT
+De base, les données renvoyées sont disponibles au format JSON. Mais il est possible de les récupérer au format XML en ajoutant à chaque requête le paramètre **format**.
 
-*Fichier retourné* [Lien](https://github.com/pgrimaud/horaires-ratp-api/blob/master/exemples/data-rer.json)
 
-    {"ligne":"b","destinations":[{"destination":"cdg+mitry"},{"destination":"robinson+st+remy"}]}
+*Exemple JSON :*
+
+	GET http://api-ratp.pierre-grimaud.fr/v2/?format=json
 	
-*Example de requête data METRO* 
+	{
+    	"response": {
+     	   "code": "400",
+        	"message": "Bad Request"
+    	},
+    	"_meta": {
+       		"version": "2",
+       		"date": "2015-11-24T23:30:00+01:00",
+        	"call": "GET /"
+    	}
+	}
 
-    GET /data/destinations/metro/1 HTTP/1.1
-    
-    Host: api-ratp.pierre-grimaud.fr
-    Date: Tue, 10 Sep 2013 09:45:09 GMT
+*Exemple XML:*
 
-*Fichier retourné* [Lien](https://github.com/pgrimaud/horaires-ratp-api/blob/master/exemples/data-metro.json)
-
-## Requêtes Horaires RER
-
-Ces requêtes permettent de récupérer les horaires des 6 prochains trains d'une ligne. Les paramètres doivent être **urlencoded**.
-
-*Construction d'une requête*
-
-    GET Host+ / +Transport+ / +Ligne+ / +Station+ / +Destination
-    
-    Host: api-ratp.pierre-grimaud.fr
-    
-    Transport : rer
-    Ligne : a | b
-    Station : (Voir requête data station)
-    Destination : (Voir requête data destination)
-
-*Example de requête Horaire RER*
-
-    GET rer/b/arcueil+cachan/cdg+mitry HTTP/1.1
-    
-    Host: api-ratp.pierre-grimaud.fr
-    Date: Sun, 12 May 2013 16:48:44 GMT
-
-*Fichier retourné* [Lien](https://github.com/pgrimaud/horaires-ratp-api/blob/master/exemples/horaires-rer.json)
-
-    {"destination": "Charles-de-Gaulle Mitry-Claye","ligne": "b","station": "arcueil cachan","horaires":[{"id": "EFLA","terminus": "Aeroport Ch.De Gaulle 2","horaire": "Train sans arr\u00eat"},{"id": "ICAR","terminus": "Mitry-Claye","horaire": "17:04"},{"id": "EKLI","terminus": "Aeroport Ch.De Gaulle 2", "horaire": "17:10"}, {"id": "EFLA", "terminus": "Aeroport Ch.De Gaulle 2", "horaire": "Train sans arr\u00eat"},{"id": "ICAR","terminus": "Mitry-Claye","horaire": "17:19"},{"id": "EKLI","terminus": "Aeroport Ch.De Gaulle 2","horaire": "17:25"}]}
-  
-## Requêtes Horaires METRO
-
-Ces requêtes permettent de récupérer les temps d'attente des 4 prochains trains d'une ligne. Les paramètres doivent être **urlencoded**.
-
-*Construction d'une requête*
-
-    GET Host+ / +Transport+ / +Ligne+ / +Station+ / +Destination
-    
-    Host: api-ratp.pierre-grimaud.fr
-    
-    Transport : metro
-    Ligne : 1 | 2 | 3 | 3b | 4 | 5 | 6 | 7 | 7b | 8 | 9 | 10 | 11 | 12 | 13 | 14
-    Station : (Voir requête data station)
-    Destination : (Voir requête data destination)
-
-*Example de requête Horaire METRO*
-
-    GET metro/1/hotel+de+Ville/chateau+de+vincennes HTTP/1.1
-    
-    Host: api-ratp.pierre-grimaud.fr
-    Date: Tue, 10 Sep 2013 09:50:20 GMT
-
-*Fichier retourné* [Lien](https://github.com/pgrimaud/horaires-ratp-api/blob/master/exemples/horaires-metro.json)
-
-    {"destination":"Ch\u00e2teau de Vincennes","ligne":"1","station":"hotel de Ville","horaires":[{"terminus":"Ch\u00e2teau de Vincennes","attente":"2 mn"},{"terminus":"Ch\u00e2teau de Vincennes","attente":"4 mn"},{"terminus":"Ch\u00e2teau de Vincennes","attente":"6 mn"},{"terminus":"Ch\u00e2teau de Vincennes","attente":"8 mn"}]}
+	GET http://api-ratp.pierre-grimaud.fr/v2/?format=xml
 	
-## Requêtes Data Trafic
+	<result>
+		<request>
+			<version>2</version>
+			<date>2015-11-24T23:30:58+01:00</date>
+			<call>GET /</call>
+		</request>
+		<response>
+			<error>
+				<code>400</code>
+				<message>Bad Request</message>
+			</error>
+		</response>
+	</result>
 
-Ces requêtes permettent de récupérer l'état du trafic du RER ou du metro.
+## Requêtes lignes
 
-*Construction d'une requête*
 
-    GET data / trafic / +Transport
-    
-    Host: api-ratp.pierre-grimaud.fr
-    
-    Transport : metro | rer | tram
+Ces requêtes permettent de récupérer les données relatives aux Rers, Métros et Tramways. (nom et destinations)
 
-*Example de requête Horaire METRO*
+	/{TypeLigne}
+	
+Paramètre | Valeur possible | Description
+--- | --- | ---
+**TypeLigne** | **rers**, **metros** ou **tramways** | Le type de ligne dont vous souhaitez avoir les informations.
 
-    GET data/trafic/rer HTTP/1.1
-    
-    Host: api-ratp.pierre-grimaud.fr
-    Date: Fri, 10 Jan 2014 21:50:20 GMT
+*Exemple :*
 
-*Fichier retourné* [Lien](https://github.com/pgrimaud/horaires-ratp-api/blob/master/exemples/data-trafic.json)
-
-    {"trafic":"perturbation","perburbations":[{"RER A":"Travaux de maintenance ce soir."}]}
+	GET http://api-ratp.pierre-grimaud.fr/v2/rers
+	{
+    	"response": {
+        	"rers": [
+            	{
+                	"line": "A",
+                	"destinations": [
+                    	{
+                        	"id": "1",
+                        	"name": "St-Germain-en-Laye Poissy-Cergy",
+                        	"slug": "st+germain+en+laye+poissy+cergy"
+                    	},
+                    	{
+                        	"id": "2",
+                        	"name": "Boissy-St-Léger Marne-la-Vallée",
+                        	"slug": "boissy+st+leger+marne+la+vallee"
+                    	}
+                	]
+            	},
+            	{
+                	"line": "B",
+                	"destinations": [
+                    	{
+                        	"id": "3",
+                        	"name": "Robinson Saint-Rémy-lès-Chevreuse",
+                        	"slug": "robinson+saint+remy+les+chevreuse"
+                    	},
+                    	{
+                        	"id": "4",
+                        	"name": "Charles-de-Gaulle Mitry-Claye",
+                        	"slug": "charles+de+gaulle+mitry+claye"
+                    	}
+                	]
+            	}
+        	]
+    	},
+    	"_meta": {
+        	"version": "2",
+        	"date": "2015-11-24T23:36:21+01:00",
+        	"call": "GET /rers"
+    	}
+	}
 	
 ## Feedback
 
@@ -146,4 +131,4 @@ Pour un bug, une demande de suggestion, une nouvelle fonctionnalité, etc... [cr
 
 ### Donneés
 
-Toutes les donneés appartiennent à la RATP et sont utilisées dans un but non commercial.
+Toutes les donneés appartiennent à la RATP et sont utilisées dans un but de recherche et non dans un but commercial.
