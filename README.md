@@ -19,14 +19,9 @@ L'API est principalement RESTful. Les données sont exposées sous la forme d'UR
 
 ## Données
 
-Les données sont disponibles pour :
-
-* **Metro** (1, 2, 3bis, 4, 5, 6, 7, 7bis, 8, 9, 10, 11, 12, 13 et 14)
-
-* **RER** (A et B)
-
-* ~~Tramways~~ (Refonte en cours)
-
+Type de données |  Description
+--- | ---
+ [Informations lignes](#requêtes-lignes) | Récupération les données relatives aux Rers, Métros et Tramways. (nom et destinations)
 
 ## Format
 
@@ -67,7 +62,11 @@ De base, les données renvoyées sont disponibles au format JSON. Mais il est po
 		</response>
 	</result>
 
-## Requêtes lignes
+---
+
+#Données
+
+## Informations lignes
 
 
 Ces requêtes permettent de récupérer les données relatives aux Rers, Métros et Tramways. (nom et destinations)
