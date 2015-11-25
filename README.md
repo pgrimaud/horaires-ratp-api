@@ -275,6 +275,4 @@ Pour un bug, une demande de suggestion, une nouvelle fonctionnalité, etc... [cr
 
 ## License
 
-### Donneés
-
-Toutes les donneés appartiennent à la RATP et sont utilisées dans un but de recherche et non dans un but commercial.
+Toutes les données appartiennent à la RATP et sont utilisées dans un but de recherche et non dans un but commercial.
