@@ -14,17 +14,17 @@
         <tbody>
           <tr class="tr-header">
             <td class="td1">
-              <img src="img/ratp/logo-rer.png" alt="" class="rer-logo" />
-              <img src="img/ratp/logo-rer-<%= ligne %>.png" alt="" class="rer-ligne" />
+              <img src="img/ratp/logo-<%= type %>.png" alt="" class="rer-logo" />
+              <img src="img/ratp/logo-<%= type %>-<%= line %>.png" alt="" class="rer-ligne" />
               <p><%= destination %></p>
             </td>
             <td colspan="2" class="td2-header"><p><%= current_time %></p></td>
           </tr>
           <% _.map(horaires, function (horaire, i) { %>
             <tr class="<% if(i%2 == 0) { %>bg-tr <% } %>tr-normal">
-              <td class="td1"><p><%= horaire.terminus %></p></td>
+              <td class="td1"><p><%= horaire.destination %></p></td>
               <td class="td2"><p><%= horaire.id %></p></td>
-              <td class="td3"><p><%= horaire.horaire %></p></td>
+              <td class="td3"><p><%= horaire.message %></p></td>
             </tr>
           <% }) %>
         </tbody>

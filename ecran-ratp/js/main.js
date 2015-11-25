@@ -3,9 +3,14 @@ $(window).load(function() {
       $content = $('#content');
 
   var getData = function() {
-    var req = $.getJSON('http://api-ratp.pierre-grimaud.fr/rer/b/arcueil+cachan/cdg+mitry');
+    var req = $.getJSON('http://api-ratp.pierre-grimaud.fr/v2/metros/1/stations/87?destination=6');
+
     req.done(function (data) {
-      data.destination = data.destination.replace(' ', '<br />');
+      data.destination = data.response.informations.destination.name.replace(' - ', '<br />');
+      data.line = data.response.informations.line;
+      data.type = data.response.informations.type;
+      data.horaires = data.response.schedules;
+
       var date = new Date(),
           hours = date.getHours(),
           minutes = date.getMinutes();
