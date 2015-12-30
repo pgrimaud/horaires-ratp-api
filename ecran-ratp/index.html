@@ -16,7 +16,8 @@
             <td class="td1">
               <img src="img/ratp/logo-<%= type %>.png" alt="" class="rer-logo" />
               <img src="img/ratp/logo-<%= type %>-<%= line %>.png" alt="" class="rer-ligne" />
-              <p><%= destination %></p>
+              <p>Station: <%= station %></p>
+              <p>Direction: <%= destination %></p>
             </td>
             <td colspan="2" class="td2-header"><p><%= current_time %></p></td>
           </tr>
@@ -27,6 +28,10 @@
               <td class="td3"><p><%= horaire.message %></p></td>
             </tr>
           <% }) %>
+
+          <tr class="tr-trafic">
+            <td class="tdfull" colspan="3"><p><i><%= traffic %></i></p></td>
+          </tr>
         </tbody>
       </table>
     </script>

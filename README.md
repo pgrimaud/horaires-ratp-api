@@ -2,7 +2,7 @@
 
 ### Changelog
 
-	v2.0 - 20151124 - Refonte de l'API
+	v2.0 - 20151127 - Refonte de l'API
 	
 ## Introduction 
 
@@ -273,6 +273,7 @@ Paramètre | Utilisation | Valeur possible | Description
 
 Pour un bug, une demande de suggestion, une nouvelle fonctionnalité, etc... [create an issue](https://github.com/pgrimaud/horaires-ratp-api/issues) ou [Twitter](http://twitter.com/nilzenx)
 
+
 ## License
 
-Toutes les données appartiennent à la RATP et sont utilisées dans un but de recherche et non dans un but commercial.
+Toutes les données appartiennent à la RATP et sont utilisées dans un but personnel ou de recherche et non dans un but commercial.

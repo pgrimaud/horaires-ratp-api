@@ -11,9 +11,10 @@ table{height:100%;margin-bottom:0 !important;}
 .td2-header p{margin-top:10px;margin-right:40px;}
 .bg-tr{background-color:#d6dcd8;}
 .tr-normal{height:13%;max-height:13%;}
-.tr-normal td{vertical-align:middle;!important}
-.tr-normal .td1 p{color:black;font-family:Verdana;font-weight:bold;font-size:22px;}
+.tr-normal td, .tr-trafic .tdfull{vertical-align:middle!important}
+.tr-normal .td1 p, .tr-normal .td2 p{color:black;font-family:Verdana;font-weight:bold;font-size:22px;margin:0px;}
 .tr-normal .td2{width:10%;}
-.tr-normal .td2 p{color:black;font-family:Verdana;font-weight:bold;font-size:22px;}
 .tr-normal .td3{text-align:right;}
-.tr-normal .td3 p{color:black;font-family:Verdana;font-weight:bold;font-size:22px;margin-right:40px;}
+.tr-normal .td3 p{color:black;font-family:Verdana;font-weight:bold;font-size:22px;margin:0 40px 0 0;}
+.tr-trafic{height:5%;background-color:#FACC2E;}
+.tr-trafic .tdfull p{color:black;font-family:Calibri;font-weight:bold;font-size:16px;margin:0px;}
