@@ -237,7 +237,7 @@ Paramètre | Valeur possible | Description
 
 Ces requêtes permettent de récupérer le trafic du réseau ferré RATP. Il est possible d'affiner la recherche en fonction du type de transport ou de la ligne.
 
-	http://api-ratp.pierre-grimaud.fr/v2/trafic/({TypeLigne}/{LigneId})
+	http://api-ratp.pierre-grimaud.fr/v2/traffic/({TypeLigne}/{LigneId})
 	
 Paramètre | Utilisation | Valeur possible | Description
 --- | --- | --- | ---
