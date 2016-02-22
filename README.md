@@ -3,6 +3,7 @@
 ### Changelog
 
 	v2.0 - 20151127 - Refonte de l'API
+	v2.1 - 20160222 - Ajout des horaires des bus
 	
 ## Introduction 
 
@@ -21,9 +22,9 @@ L'API est principalement RESTful. Les données sont exposées sous la forme d'UR
 
 Type de données |  Description
 --- | ---
- [Lignes](#lignes) | Récupération des données relatives aux Rers, Métros et Tramways. (nom et destinations)
- [Stations](#stations) | Récupération des stations d'une ligne de Rer, Métro ou Tramway.
- [Horaires](#horaires) | Récupération des horaires en temps réel d'une station de Rer, Métro ou Tramway.
+ [Lignes](#lignes) | Récupération des données relatives aux Rers, Métros, Tramways et Bus. (nom et destinations)
+ [Stations](#stations) | Récupération des stations d'une ligne de Rer, Métro, Tramway et Bus.
+ [Horaires](#horaires) | Récupération des horaires en temps réel d'une station de Rer, Métro, Tramway ou Bus.
  [Trafic](#trafic) | Récupération des données de trafic sur l'ensemble du réseau ferré RATP. 
 ## Format
 
@@ -71,13 +72,13 @@ De base, les données renvoyées sont disponibles au format JSON. Mais il est po
 ## Lignes
 
 
-Ces requêtes permettent de récupérer les données relatives aux Rers, Métros et Tramways. (nom et destinations)
+Ces requêtes permettent de récupérer les données relatives aux Rers, Métros, Tramways ou Bus. (nom et destinations)
 
 	http://api-ratp.pierre-grimaud.fr/v2/{TypeLigne}
 	
 Paramètre | Valeur possible | Description
 --- | --- | ---
-**TypeLigne** | **rers**, **metros** ou **tramways** | Le type de transport dont vous souhaitez avoir les informations.
+**TypeLigne** | **rers**, **metros**, **tramways** ou **bus** | Le type de transport dont vous souhaitez avoir les informations.
 
 *Exemple :*
 
@@ -126,13 +127,13 @@ Paramètre | Valeur possible | Description
 	
 ## Stations
 
-Ces requêtes permettent de récupérer les stations d'une ligne de Rer, Métro ou Tramway.
+Ces requêtes permettent de récupérer les stations d'une ligne de Rer, Métro, Tramway ou Bus.
 
 	http://api-ratp.pierre-grimaud.fr/v2/{TypeLigne}/{LigneId}/stations
 	
 Paramètre | Valeur possible | Description
 --- | --- | ---
-**TypeLigne** | **rers**, **metros** ou **tramways** | Le type de transport dont vous souhaitez avoir les informations.
+**TypeLigne** | **rers**, **metros**, **tramways** ou **bus** | Le type de transport dont vous souhaitez avoir les informations.
 **LigneId** | Valeur **line** d'une requête [lignes](#lignes) | Le nom de la ligne du type de transport spécifié.
 
 *Exemple :*
@@ -174,13 +175,13 @@ Paramètre | Valeur possible | Description
 
 ## Horaires
 
-Ces requêtes permettent de récupérer les temps d'attente des prochains trains d'une ligne de Rer, Métro ou Tramway en fonction de la destination et de la station.
+Ces requêtes permettent de récupérer les temps d'attente des prochains trains d'une ligne de Rer, Métro, Tramway ou Bus en fonction de la destination et de la station.
 
 	http://api-ratp.pierre-grimaud.fr/v2/{TypeLigne}/{LigneId}/stations/{StationId}?destination={DestinationId}
 	
 Paramètre | Valeur possible | Description
 --- | --- | ---
-**TypeLigne** | **rers**, **metros** ou **tramways**. | Le type de transport dont vous souhaitez avoir les informations.
+**TypeLigne** | **rers**, **metros**, **tramways** ou **bus** | Le type de transport dont vous souhaitez avoir les informations.
 **LigneId** | Valeur **line** d'une requête [lignes](#lignes). | Le nom de la ligne du type de transport spécifié.
 **StationId** | Valeur **id** ou **slug** d'une requête [stations](#stations). | L'id ou l'indicatif de la station désirée.
 **DestinationId** | Valeur **id** ou **slug** d'une requête [lignes](#lignes). | L'id ou l'indicatif de la destination désirée.
@@ -231,7 +232,7 @@ Paramètre | Valeur possible | Description
             "date": "2015-11-25T23:30:52+01:00",
             "call": "GET /metros/8/stations/275?destination=23"
         }
-    }     ```
+    }
 
 ## Trafic
 
@@ -276,4 +277,4 @@ Pour un bug, une demande de suggestion, une nouvelle fonctionnalité, etc... [cr
 
 ## License
 
-Toutes les données appartiennent à la RATP et sont utilisées dans un but personnel ou de recherche et non dans un but commercial.
+Toutes les données appartiennent à la RATP et sont utilisées dans un **but strictement personnel** ou de **recherche** et non dans un but commercial.
