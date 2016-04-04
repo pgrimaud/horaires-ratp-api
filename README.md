@@ -4,6 +4,7 @@
 
 	v2.0 - 20151127 - Refonte de l'API
 	v2.1 - 20160222 - Ajout des horaires des bus
+	v2.2 - 20160404 - Clarification des variables "id"
 	
 ## Introduction 
 
@@ -26,6 +27,10 @@ Type de données |  Description
  [Stations](#stations) | Récupération des stations d'une ligne de Rer, Métro, Tramway et Bus.
  [Horaires](#horaires) | Récupération des horaires en temps réel d'une station de Rer, Métro, Tramway ou Bus.
  [Trafic](#trafic) | Récupération des données de trafic sur l'ensemble du réseau ferré RATP. 
+ 
+ 
+N.B. : les ressources ``destinations`` sont indépendantes des ressources ``stations``. Par conséquent elles n'ont pas le même ``id``, même si elles partagent la valeur ``name`` ou ``slug``. 
+ 
 ## Format
 
 De base, les données renvoyées sont disponibles au format JSON. Mais il est possible de les récupérer au format XML en ajoutant à chaque requête le paramètre **format**.
@@ -90,12 +95,12 @@ Paramètre | Valeur possible | Description
                 	"line": "A",
                 	"destinations": [
                     	{
-                        	"id": "1",
+                        	"id_destination": "1",
                         	"name": "St-Germain-en-Laye Poissy-Cergy",
                         	"slug": "st+germain+en+laye+poissy+cergy"
                     	},
                     	{
-                        	"id": "2",
+                        	"id_destination": "2",
                         	"name": "Boissy-St-Léger Marne-la-Vallée",
                         	"slug": "boissy+st+leger+marne+la+vallee"
                     	}
@@ -105,12 +110,12 @@ Paramètre | Valeur possible | Description
                 	"line": "B",
                 	"destinations": [
                     	{
-                        	"id": "3",
+                        	"id_destination": "3",
                         	"name": "Robinson Saint-Rémy-lès-Chevreuse",
                         	"slug": "robinson+saint+remy+les+chevreuse"
                     	},
                     	{
-                        	"id": "4",
+                        	"id"_destination: "4",
                         	"name": "Charles-de-Gaulle Mitry-Claye",
                         	"slug": "charles+de+gaulle+mitry+claye"
                     	}
@@ -144,22 +149,22 @@ Paramètre | Valeur possible | Description
         "response": {
             "stations": [
                 {
-                    "id": "118",
+                    "id_station": "118",
                     "name": "Gambetta",
                     "slug": "gambetta"
                 },
                 {
-                    "id": "119",
+                    "id_station": "119",
                     "name": "Pelleport",
                     "slug": "pelleport"
                 },
                 {
-                    "id": "120",
+                    "id_station": "120",
                     "name": "Porte des Lilas",
                     "slug": "porte+des+lilas"
                 },
                 {
-                    "id": "121",
+                    "id_station": "121",
                     "name": "Saint-Fargeau",
                     "slug": "saint+fargeau"
                 }
@@ -196,14 +201,14 @@ Paramètre | Valeur possible | Description
         "response": {
             "informations": {
                 "destination": {
-                    "id": "23",
+                    "id_destination": "23",
                     "name": "Balard",
                     "slug": "balard"
                 },
                 "line": "8",
                 "type": "metro",
                 "station": {
-                    "id": "275",
+                    "id_station": "275",
                     "name": "Daumesnil",
                     "slug": "daumesnil"
                 }
@@ -268,8 +273,8 @@ Paramètre | Utilisation | Valeur possible | Description
         }
     }
 
----
-	
+---	
+
 ## Feedback
 
 Pour un bug, une demande de suggestion, une nouvelle fonctionnalité, etc... [create an issue](https://github.com/pgrimaud/horaires-ratp-api/issues) ou [Twitter](http://twitter.com/nilzenx)
