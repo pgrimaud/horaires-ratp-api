@@ -2,9 +2,10 @@
 
 ### Changelog
 
-	v2.0 - 20151127 - Refonte de l'API
-	v2.1 - 20160222 - Ajout des horaires des bus
-	v2.2 - 20160404 - Clarification des variables "id"
+	v2.0.0 - 20151127 - Refonte de l'API
+	v2.1.0 - 20160222 - Ajout des horaires des bus
+	v2.1.1 - 20160404 - Clarification des variables "id"
+	v2.2.O - 20160421 - Ajout d'une station d'arrivée pour le RER
 	
 ## Introduction 
 
