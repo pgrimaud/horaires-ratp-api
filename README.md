@@ -240,7 +240,7 @@ Paramètre | Valeur possible | Description
         }
     }
 
-####Nouveauté v2.3 : Gare d'arrivée, uniquement pour les RER (BETA)
+#### Nouveauté v2.2 : Gare d'arrivée, uniquement pour les RER (BETA)
 
 	http://api-ratp.pierre-grimaud.fr/v2/{TypeLigne}/{LigneId}/stations/{StationId}?destination={DestinationId}&endingstation={EndingStationId}
 
