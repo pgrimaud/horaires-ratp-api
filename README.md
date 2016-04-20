@@ -2,9 +2,10 @@
 
 ### Changelog
 
-	v2.0 - 20151127 - Refonte de l'API
-	v2.1 - 20160222 - Ajout des horaires des bus
-	v2.2 - 20160404 - Clarification des variables "id"
+	v2.0.0 - 20151127 - Refonte de l'API
+	v2.1.0 - 20160222 - Ajout des horaires des bus
+	v2.1.1 - 20160404 - Clarification des variables "id"
+	v2.2.O - 20160421 - Ajout d'une station d'arrivée pour le RER
 	
 ## Introduction 
 
@@ -194,10 +195,10 @@ Paramètre | Valeur possible | Description
 *Exemple :*
 
 	GET http://api-ratp.pierre-grimaud.fr/v2/metros/8/stations/daumesnil?destination=balard
-	ou
-	GET http://api-ratp.pierre-grimaud.fr/v2/metros/8/stations/275?destination=23
-	
-	{
+    ou
+    GET http://api-ratp.pierre-grimaud.fr/v2/metros/8/stations/275?destination=23
+    
+    {
         "response": {
             "informations": {
                 "destination": {
@@ -215,27 +216,84 @@ Paramètre | Valeur possible | Description
             },
             "schedules": [
                 {
-                	"destination": "Balard",
-                	"message": "5 mn"
-            	},
-            	{
-                	"destination": "Balard",
-                	"message": "14 mn"
-            	},
-            	{
-            	    "destination": "Balard",
-            	    "message": "24 mn"
-            	},
-            	{
-            	    "destination": "Balard",
-            	    "message": "32 mn"
-            	}
+                    "destination": "Balard",
+                    "message": "5 mn"
+                },
+                {
+                    "destination": "Balard",
+                    "message": "14 mn"
+                },
+                {
+                    "destination": "Balard",
+                    "message": "24 mn"
+                },
+                {
+                    "destination": "Balard",
+                    "message": "32 mn"
+                }
             ]
         },
         "_meta": {
             "version": "2",
             "date": "2015-11-25T23:30:52+01:00",
             "call": "GET /metros/8/stations/275?destination=23"
+        }
+    }
+
+#### Nouveauté v2.2 : Gare d'arrivée, uniquement pour les RER (BETA)
+
+	http://api-ratp.pierre-grimaud.fr/v2/{TypeLigne}/{LigneId}/stations/{StationId}?destination={DestinationId}&endingstation={EndingStationId}
+
+En plus des paramètres [précédents](#horaires), il est possible de spécifier le paramètre suivant :
+
+Paramètre | Valeur possible | Description
+--- | --- | ---
+**EndingStationId** | Valeur **id** ou **slug** d'une requête [stations](#stations). | L'id ou l'indicatif de la station désirée.
+
+*Exemple :*
+    
+    GET http://api-ratp.pierre-grimaud.fr/v2/rers/B/stations/denfert+rochereau?destination=robinson+saint+remy+les+chevreuse&endingstation=arcueil+cachan
+    ou
+    GET http://api-ratp.pierre-grimaud.fr/v2/rers/B/stations/44?destination=3&endingstation=1
+    
+    {
+        "response": {
+            "informations": {
+                "destination": {
+                    "id": "3",
+                    "name": "Robinson Saint-Rémy-lès-Chevreuse",
+                    "slug": "robinson+saint+remy+les+chevreuse"
+                },
+                "line": "B",
+                "type": "rer",
+                "station": {
+                    "id": "44",
+                    "name": "Denfert Rochereau",
+                    "slug": "denfert+rochereau"
+                },
+                "endingstation": {
+                    "id": "1",
+                    "name": "Arcueil Cachan",
+                    "slug": "arcueil+cachan"
+                }
+            },
+            "schedules": [
+                {
+                    "id": "KFTE",
+                    "destination": "Massy Palaiseau",
+                    "message": "Train à l'approche"
+                },
+                {
+                    "id": "SOLE",
+                    "destination": "Robinson",
+                    "message": "01:03"
+                }
+            ]
+        },
+        "_meta": {
+            "version": "2",
+            "date": "2016-04-21T00:48:44+02:00",
+            "call": "GET /rers/B/stations/denfert+rochereau?destination=robinson+saint+remy+les+chevreuse&endingstation=arcueil+cachan"
         }
     }
 
