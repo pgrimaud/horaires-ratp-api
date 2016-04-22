@@ -6,7 +6,7 @@
 	v2.1.0 - 20160222 - Ajout des horaires des bus
 	v2.1.1 - 20160404 - Clarification des variables "id"
 	v2.2.0 - 20160421 - Ajout d'une station d'arrivée pour le RER
-	v2.2.1 - 20160422 - Correctif lié à la [gare d'arrivée](#nouveaut%C3%A9-v22--gare-darriv%C3%A9e-uniquement-pour-les-rer-beta)
+	v2.2.1 - 20160422 - Correctif lié à la gare d'arrivée
 	
 ## Introduction 
 
