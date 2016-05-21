@@ -336,7 +336,7 @@ Paramètre | Utilisation | Valeur possible | Description
 
 ## Feedback
 
-Pour un bug, une demande de suggestion, une nouvelle fonctionnalité, etc... [create an issue](https://github.com/pgrimaud/horaires-ratp-api/issues) ou [Twitter](http://twitter.com/nilzenx)
+Pour un bug, une demande de suggestion, une nouvelle fonctionnalité, etc... [create an issue](https://github.com/pgrimaud/horaires-ratp-api/issues) ou [Twitter](http://twitter.com/pgrimaud_)
 
 
 ## License
