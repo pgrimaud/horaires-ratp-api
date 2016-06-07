@@ -7,10 +7,11 @@
 	v2.1.1 - 20160404 - Clarification des variables "id"
 	v2.2.0 - 20160421 - Ajout d'une station d'arrivée pour le RER
 	v2.2.1 - 20160422 - Correctif lié à la gare d'arrivée
+	v2.3.0 - 20160607 - Ajout des horaires des noctiliens
 	
 ## Introduction 
 
-Cette API permet à l'utilisateur de récupérer les horaires RATP (RER, Metro et Tramway) en temps réel à un arrêt défini.
+Cette API permet à l'utilisateur de récupérer les horaires RATP (RER, Metro, Tramway, Bus et Noctilien) en temps réel à un arrêt défini.
 
 ## REST
 
@@ -25,9 +26,9 @@ L'API est principalement RESTful. Les données sont exposées sous la forme d'UR
 
 Type de données |  Description
 --- | ---
- [Lignes](#lignes) | Récupération des données relatives aux Rers, Métros, Tramways et Bus. (nom et destinations)
- [Stations](#stations) | Récupération des stations d'une ligne de Rer, Métro, Tramway et Bus.
- [Horaires](#horaires) | Récupération des horaires en temps réel d'une station de Rer, Métro, Tramway ou Bus.
+ [Lignes](#lignes) | Récupération des données relatives aux Rers, Métros, Tramways, Bus et Noctilien. (nom et destinations)
+ [Stations](#stations) | Récupération des stations d'une ligne de Rer, Métro, Tramway, Bus et Noctilien.
+ [Horaires](#horaires) | Récupération des horaires en temps réel d'une station de Rer, Métro, Tramway, Bus ou Noctilien.
  [Trafic](#trafic) | Récupération des données de trafic sur l'ensemble du réseau ferré RATP. 
  
  
@@ -79,13 +80,13 @@ De base, les données renvoyées sont disponibles au format JSON. Mais il est po
 ## Lignes
 
 
-Ces requêtes permettent de récupérer les données relatives aux Rers, Métros, Tramways ou Bus. (nom et destinations)
+Ces requêtes permettent de récupérer les données relatives aux Rers, Métros, Tramways, Bus ou Noctilien. (nom et destinations)
 
 	http://api-ratp.pierre-grimaud.fr/v2/{TypeLigne}
 	
 Paramètre | Valeur possible | Description
 --- | --- | ---
-**TypeLigne** | **rers**, **metros**, **tramways** ou **bus** | Le type de transport dont vous souhaitez avoir les informations.
+**TypeLigne** | **rers**, **metros**, **tramways**, **bus**, **noctiliens** | Le type de transport dont vous souhaitez avoir les informations.
 
 *Exemple :*
 
@@ -134,13 +135,13 @@ Paramètre | Valeur possible | Description
 	
 ## Stations
 
-Ces requêtes permettent de récupérer les stations d'une ligne de Rer, Métro, Tramway ou Bus.
+Ces requêtes permettent de récupérer les stations d'une ligne de Rer, Métro, Tramway, Bus ou Noctilien.
 
 	http://api-ratp.pierre-grimaud.fr/v2/{TypeLigne}/{LigneId}/stations
 	
 Paramètre | Valeur possible | Description
 --- | --- | ---
-**TypeLigne** | **rers**, **metros**, **tramways** ou **bus** | Le type de transport dont vous souhaitez avoir les informations.
+**TypeLigne** | **rers**, **metros**, **tramways**, **bus** ou **noctiliens** | Le type de transport dont vous souhaitez avoir les informations.
 **LigneId** | Valeur **line** d'une requête [lignes](#lignes) | Le nom de la ligne du type de transport spécifié.
 
 *Exemple :*
@@ -182,13 +183,13 @@ Paramètre | Valeur possible | Description
 
 ## Horaires
 
-Ces requêtes permettent de récupérer les temps d'attente des prochains trains d'une ligne de Rer, Métro, Tramway ou Bus en fonction de la destination et de la station.
+Ces requêtes permettent de récupérer les temps d'attente des prochains trains d'une ligne de Rer, Métro, Tramway, Bus ou Noctilien en fonction de la destination et de la station.
 
 	http://api-ratp.pierre-grimaud.fr/v2/{TypeLigne}/{LigneId}/stations/{StationId}?destination={DestinationId}
 	
 Paramètre | Valeur possible | Description
 --- | --- | ---
-**TypeLigne** | **rers**, **metros**, **tramways** ou **bus** | Le type de transport dont vous souhaitez avoir les informations.
+**TypeLigne** | **rers**, **metros**, **tramways**, **bus** ou **noctilien** | Le type de transport dont vous souhaitez avoir les informations.
 **LigneId** | Valeur **line** d'une requête [lignes](#lignes). | Le nom de la ligne du type de transport spécifié.
 **StationId** | Valeur **id** ou **slug** d'une requête [stations](#stations). | L'id ou l'indicatif de la station désirée.
 **DestinationId** | Valeur **id** ou **slug** d'une requête [lignes](#lignes). | L'id ou l'indicatif de la destination désirée.
