@@ -1,4 +1,4 @@
-# Horaires RATP API ![Powered by appengine](http://code.google.com/appengine/images/appengine-noborder-120x30.gif)
+# Horaires RATP API ![Powered by appengine](https://cloud.google.com/appengine/images/appengine-noborder-120x30.gif?csw=1)
 
 ### Changelog
 
