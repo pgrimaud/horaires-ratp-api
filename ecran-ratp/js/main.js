@@ -10,8 +10,6 @@ $(window).load(function() {
     $.when($.getJSON(schedules_url), $.getJSON(traffic_url)).done(function(schedules, traffic) {
       var data = {};
       data.traffic = traffic[0].response.message;
-
-      var response = schedules[0].response.informations.destination.name.replace(' - ', '<br />');
       data.line = schedules[0].response.informations.line;
       data.type = schedules[0].response.informations.type;
       data.horaires = schedules[0].response.schedules;
