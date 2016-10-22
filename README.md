@@ -8,6 +8,8 @@
 	v2.2.0 - 20160421 - Ajout d'une station d'arrivée pour le RER
 	v2.2.1 - 20160422 - Correctif lié à la gare d'arrivée
 	v2.3.0 - 20160607 - Ajout des horaires des noctiliens
+	v2.4.0 - 20160815 - Ajout d'un callback pour les requêtes JSONP
+	v2.5.0 - 20161022 - Passage en HTTPS
 	
 ## Introduction 
 
@@ -15,7 +17,7 @@ Cette API permet à l'utilisateur de récupérer les horaires RATP (RER, Metro, 
 
 ## REST
 
-    API server : http://api-ratp.pierre-grimaud.fr/v2
+    API server : https://api-ratp.pierre-grimaud.fr/v2
 
 L'API est principalement RESTful. Les données sont exposées sous la forme d'URI qui représentent des ressources et peuvent être récupérées via des clients HTTP (comme les navigateurs web).
 
@@ -41,7 +43,7 @@ De base, les données renvoyées sont disponibles au format JSON. Mais il est po
 
 *Exemple JSON :*
 
-	GET http://api-ratp.pierre-grimaud.fr/v2/?format=json
+	GET https://api-ratp.pierre-grimaud.fr/v2/?format=json
 	
 	{
     	"response": {
@@ -57,7 +59,7 @@ De base, les données renvoyées sont disponibles au format JSON. Mais il est po
 
 *Exemple XML:*
 
-	GET http://api-ratp.pierre-grimaud.fr/v2/?format=xml
+	GET https://api-ratp.pierre-grimaud.fr/v2/?format=xml
 	
 	<result>
 		<request>
@@ -72,8 +74,12 @@ De base, les données renvoyées sont disponibles au format JSON. Mais il est po
 			</error>
 		</response>
 	</result>
+	
+*Exemple JSONP:*
 
----
+	GET https://api-ratp.pierre-grimaud.fr/v2/?callback=myCallBack
+	
+	myCallBack({"response": {"code": "400","message": "Bad Request"},"_meta": {"version": "2","date": "2015-11-24T23:30:00+01:00","call": "GET /"}})
 
 #Données
 
@@ -82,7 +88,7 @@ De base, les données renvoyées sont disponibles au format JSON. Mais il est po
 
 Ces requêtes permettent de récupérer les données relatives aux Rers, Métros, Tramways, Bus ou Noctilien. (nom et destinations)
 
-	http://api-ratp.pierre-grimaud.fr/v2/{TypeLigne}
+	https://api-ratp.pierre-grimaud.fr/v2/{TypeLigne}
 	
 Paramètre | Valeur possible | Description
 --- | --- | ---
@@ -90,7 +96,7 @@ Paramètre | Valeur possible | Description
 
 *Exemple :*
 
-	GET http://api-ratp.pierre-grimaud.fr/v2/rers
+	GET https://api-ratp.pierre-grimaud.fr/v2/rers
 	{
     	"response": {
         	"rers": [
@@ -137,7 +143,7 @@ Paramètre | Valeur possible | Description
 
 Ces requêtes permettent de récupérer les stations d'une ligne de Rer, Métro, Tramway, Bus ou Noctilien.
 
-	http://api-ratp.pierre-grimaud.fr/v2/{TypeLigne}/{LigneId}/stations
+	https://api-ratp.pierre-grimaud.fr/v2/{TypeLigne}/{LigneId}/stations
 	
 Paramètre | Valeur possible | Description
 --- | --- | ---
@@ -146,7 +152,7 @@ Paramètre | Valeur possible | Description
 
 *Exemple :*
 
-	GET http://api-ratp.pierre-grimaud.fr/v2/metros/3B/stations
+	GET https://api-ratp.pierre-grimaud.fr/v2/metros/3B/stations
 	
 	{
         "response": {
@@ -185,7 +191,7 @@ Paramètre | Valeur possible | Description
 
 Ces requêtes permettent de récupérer les temps d'attente des prochains trains d'une ligne de Rer, Métro, Tramway, Bus ou Noctilien en fonction de la destination et de la station.
 
-	http://api-ratp.pierre-grimaud.fr/v2/{TypeLigne}/{LigneId}/stations/{StationId}?destination={DestinationId}
+	https://api-ratp.pierre-grimaud.fr/v2/{TypeLigne}/{LigneId}/stations/{StationId}?destination={DestinationId}
 	
 Paramètre | Valeur possible | Description
 --- | --- | ---
@@ -196,9 +202,9 @@ Paramètre | Valeur possible | Description
 
 *Exemple :*
 
-	GET http://api-ratp.pierre-grimaud.fr/v2/metros/8/stations/daumesnil?destination=balard
+	GET https://api-ratp.pierre-grimaud.fr/v2/metros/8/stations/daumesnil?destination=balard
     ou
-    GET http://api-ratp.pierre-grimaud.fr/v2/metros/8/stations/275?destination=23
+    GET https://api-ratp.pierre-grimaud.fr/v2/metros/8/stations/275?destination=23
     
     {
         "response": {
@@ -244,7 +250,7 @@ Paramètre | Valeur possible | Description
 
 #### Nouveauté v2.2 : Gare d'arrivée, uniquement pour les RER (BETA)
 
-	http://api-ratp.pierre-grimaud.fr/v2/{TypeLigne}/{LigneId}/stations/{StationId}?destination={DestinationId}&endingstation={EndingStationId}
+	https://api-ratp.pierre-grimaud.fr/v2/{TypeLigne}/{LigneId}/stations/{StationId}?destination={DestinationId}&endingstation={EndingStationId}
 
 En plus des paramètres [précédents](#horaires), il est possible de spécifier le paramètre suivant :
 
@@ -254,9 +260,9 @@ Paramètre | Valeur possible | Description
 
 *Exemple :*
     
-    GET http://api-ratp.pierre-grimaud.fr/v2/rers/B/stations/denfert+rochereau?destination=robinson+saint+remy+les+chevreuse&endingstation=arcueil+cachan
+    GET https://api-ratp.pierre-grimaud.fr/v2/rers/B/stations/denfert+rochereau?destination=robinson+saint+remy+les+chevreuse&endingstation=arcueil+cachan
     ou
-    GET http://api-ratp.pierre-grimaud.fr/v2/rers/B/stations/44?destination=3&endingstation=1
+    GET https://api-ratp.pierre-grimaud.fr/v2/rers/B/stations/44?destination=3&endingstation=1
     
     {
         "response": {
@@ -303,7 +309,7 @@ Paramètre | Valeur possible | Description
 
 Ces requêtes permettent de récupérer le trafic du réseau ferré RATP. Il est possible d'affiner la recherche en fonction du type de transport ou de la ligne.
 
-	http://api-ratp.pierre-grimaud.fr/v2/traffic/({TypeLigne}/{LigneId})
+	https://api-ratp.pierre-grimaud.fr/v2/traffic/({TypeLigne}/{LigneId})
 	
 Paramètre | Utilisation | Valeur possible | Description
 --- | --- | --- | ---
@@ -313,7 +319,7 @@ Paramètre | Utilisation | Valeur possible | Description
 
 *Exemple :*
 
-	GET http://api-ratp.pierre-grimaud.fr/v2/traffic/metros/1
+	GET https://api-ratp.pierre-grimaud.fr/v2/traffic/metros/1
 	
 	{
         "response": {
@@ -337,7 +343,7 @@ Paramètre | Utilisation | Valeur possible | Description
 
 ## Feedback
 
-Pour un bug, une demande de suggestion, une nouvelle fonctionnalité, etc... [create an issue](https://github.com/pgrimaud/horaires-ratp-api/issues) ou [Twitter](http://twitter.com/pgrimaud_)
+Pour un bug, une demande de suggestion, une nouvelle fonctionnalité, etc... [create an issue](https://github.com/pgrimaud/horaires-ratp-api/issues) ou [Twitter](https://twitter.com/pgrimaud_)
 
 
 ## License
