@@ -43,43 +43,113 @@ De base, les données renvoyées sont disponibles au format JSON. Mais il est po
 
 *Exemple JSON :*
 
-	GET https://api-ratp.pierre-grimaud.fr/v2/?format=json
+	GET https://api-ratp.pierre-grimaud.fr/v2/metros/3B/stations?format=json
 	
-	{
-    	"response": {
-     	   "code": "400",
-        	"message": "Bad Request"
-    	},
-    	"_meta": {
-       		"version": "2",
-       		"date": "2015-11-24T23:30:00+01:00",
-        	"call": "GET /"
-    	}
-	}
+    {
+        "response": {
+            "stations": [
+                {
+                    "id": "118",
+                    "name": "Gambetta",
+                    "slug": "gambetta"
+                },
+                {
+                    "id": "119",
+                    "name": "Pelleport",
+                    "slug": "pelleport"
+                },
+                {
+                    "id": "120",
+                    "name": "Porte des Lilas",
+                    "slug": "porte+des+lilas"
+                },
+                {
+                    "id": "121",
+                    "name": "Saint-Fargeau",
+                    "slug": "saint+fargeau"
+                }
+            ]
+        },
+        "_meta": {
+            "version": "2",
+            "date": "2016-12-05T12:14:39+01:00",
+            "call": "GET /metros/3B/stations"
+        }
+    }
 
 *Exemple XML:*
 
-	GET https://api-ratp.pierre-grimaud.fr/v2/?format=xml
+	GET https://api-ratp.pierre-grimaud.fr/v2/metros/3B/stations?format=xml
 	
 	<result>
-		<request>
-			<version>2</version>
-			<date>2015-11-24T23:30:58+01:00</date>
-			<call>GET /</call>
-		</request>
-		<response>
-			<error>
-				<code>400</code>
-				<message>Bad Request</message>
-			</error>
-		</response>
-	</result>
+    	<request>
+    		<version>2</version>
+    		<date>2016-12-05T12:15:12+01:00</date>
+    		call>GET /metros/3B/stations</call>
+    	</request>
+    	<response>
+    		<stations>
+    			<station>
+    				<id>118</id>
+    				<name>Gambetta</name>
+    				<slug>gambetta</slug>
+    			</station>
+    			<station>
+    				<id>119</id>
+    				<name>Pelleport</name>
+    				<slug>pelleport</slug>
+    			</station>
+    			<station>
+    				<id>120</id>
+    				<name>Porte des Lilas</name>
+    				<slug>porte+des+lilas</slug>
+    			</station>
+    			<station>
+    				<id>121</id>
+    				<name>Saint-Fargeau</name>
+    				<slug>saint+fargeau</slug>
+    			</station>
+    		</stations>
+    	</response>
+    </result>
 	
 *Exemple JSONP:*
 
 	GET https://api-ratp.pierre-grimaud.fr/v2/?callback=myCallBack
 	
-	myCallBack({"response": {"code": "400","message": "Bad Request"},"_meta": {"version": "2","date": "2015-11-24T23:30:00+01:00","call": "GET /"}})
+	myCallBack (
+    {
+    	"response": {
+    		"stations": [
+    			{
+    				"id": "118",
+    				"name": "Gambetta",
+    				"slug": "gambetta"
+    			},
+    			{
+    				"id": "119",
+    				"name": "Pelleport",
+    				"slug": "pelleport"
+    			},
+    			{
+    				"id": "120",
+    				"name": "Porte des Lilas",
+    				"slug": "porte+des+lilas"
+    			},
+    			{
+    				"id": "121",
+    				"name": "Saint-Fargeau",
+    				"slug": "saint+fargeau"
+    			}
+    		]
+    	},
+    	"_meta": {
+    		"version": "2",
+    		"date": "2016-12-05T12:16:25+01:00",
+    		"call": "GET /metros/3B/stations"
+    	}	
+    }
+    )
 
 #Données
 
