@@ -115,7 +115,7 @@ De base, les données renvoyées sont disponibles au format JSON. Mais il est po
 	
 *Exemple JSONP:*
 
-	GET https://api-ratp.pierre-grimaud.fr/v2/?callback=myCallBack
+	GET https://api-ratp.pierre-grimaud.fr/v2/metros/3B/stations?callback=myCallBack
 	
 	myCallBack (
     {
