@@ -1,4 +1,4 @@
-$(window).load(function() {
+$(function() {
   var template = _.template($('#page-template').html()),
       $content = $('#content');
 
@@ -8,19 +8,24 @@ $(window).load(function() {
     var traffic_url = 'http://api-ratp.pierre-grimaud.fr/v2/traffic/rers/b';
 
     $.when($.getJSON(schedules_url), $.getJSON(traffic_url)).done(function(schedules, traffic) {
-      var data = {};
-      data.traffic = traffic[0].response.message;
-      data.line = schedules[0].response.informations.line;
-      data.type = schedules[0].response.informations.type;
-      data.horaires = schedules[0].response.schedules;
-      data.destination = schedules[0].response.informations.destination.name;
-      data.station = schedules[0].response.informations.station.name;
+            var date = new Date(),
+                hours = date.getHours(),
+                minutes = date.getMinutes(),
+                current_time = (hours < 10 ? '0' + hours : hours) + ':' + (minutes < 10 ? '0' + minutes : minutes);
 
-      var date = new Date(),
-          hours = date.getHours(),
-          minutes = date.getMinutes();
-      data.current_time = (hours < 10 ? '0' + hours : hours) + ':' +
-                          (minutes < 10 ? '0' + minutes : minutes);
+            var trafficResponse = traffic[0].response,
+                scheduleResponse = schedules[0].response,
+                scheduleResponseInformation = scheduleResponse.informations;
+
+            var data = {
+                traffic: trafficResponse.message,
+                line: scheduleResponseInformation.line,
+                type: scheduleResponseInformation.type,
+                horaires: scheduleResponse.schedules,
+                destination: scheduleResponseInformation.destination.name,
+                station: scheduleResponseInformation.station.name,
+                current_time: current_time
+            };
 
       $content.html(template(data));
 

@@ -2,10 +2,10 @@
 <html lang="fr">
   <head>
     <meta charset="utf-8">
+    <title>Proto RATP API</title>
     <link href="css/bootstrap-cosmo.css" rel="stylesheet"/>
     <link href="css/bootstrap-responsive.css" rel="stylesheet"/>
     <link href="css/fix.css" rel="stylesheet"/>
-    <title>Proto RATP API</title>
   </head>
   <body>
     <div id="content"></div>
@@ -22,7 +22,7 @@
             <td colspan="2" class="td2-header"><p><%= current_time %></p></td>
           </tr>
           <% _.map(horaires, function (horaire, i) { %>
-            <tr class="<% if(i%2 == 0) { %>bg-tr <% } %>tr-normal">
+            <tr class="<% if(i%2) { %>bg-tr <% } %>tr-normal">
               <td class="td1"><p><%= horaire.destination %></p></td>
               <td class="td2"><p><%= horaire.id %></p></td>
               <td class="td3"><p><%= horaire.message %></p></td>
