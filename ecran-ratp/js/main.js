@@ -4,8 +4,8 @@ $(function() {
 
   var getData = function() {
 
-    var schedules_url = 'http://api-ratp.pierre-grimaud.fr/v2/rers/b/stations/arcueil+cachan?destination=4';
-    var traffic_url = 'http://api-ratp.pierre-grimaud.fr/v2/traffic/rers/b';
+    var schedules_url = 'https://api-ratp.pierre-grimaud.fr/v2/rers/b/stations/arcueil+cachan?destination=4';
+    var traffic_url = 'https://api-ratp.pierre-grimaud.fr/v2/traffic/rers/b';
 
     $.when($.getJSON(schedules_url), $.getJSON(traffic_url)).done(function(schedules, traffic) {
             var date = new Date(),
