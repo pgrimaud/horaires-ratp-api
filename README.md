@@ -10,6 +10,7 @@
 	v2.3.0 - 20160607 - Ajout des horaires des noctiliens
 	v2.4.0 - 20160815 - Ajout d'un callback pour les requêtes JSONP
 	v2.5.0 - 20161022 - Passage en HTTPS
+	v2.5.1 - 20170118 - Provenance des RER
 	
 ## Introduction 
 
@@ -357,14 +358,16 @@ Paramètre | Valeur possible | Description
             },
             "schedules": [
                 {
-                    "id": "KFTE",
-                    "destination": "Massy Palaiseau",
-                    "message": "Train à l'approche"
+                    "id": "SOLE",
+                    "destination": "Robinson",
+                    "message": "23:24",
+                    "origin": "Aéroport Charles-de-Gaulle 1"
                 },
                 {
                     "id": "SOLE",
                     "destination": "Robinson",
-                    "message": "01:03"
+                    "message": "23:37",
+                    "origin": "Aéroport Charles-de-Gaulle 1"
                 }
             ]
         },
