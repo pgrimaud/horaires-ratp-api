@@ -95,7 +95,7 @@ De base, les données renvoyées sont disponibles au format JSON. Mais il est po
 
 ## Lignes
 
-Exemple de requête pour récupérer toutes les lignes du métro [(lien vers la documentation)](https://api-ratp.pierre-grimaud.fr/v5/app_dev.php/documentation#get--lines-\{type}): 
+Exemple de requête pour récupérer toutes les lignes du métro [(lien vers la documentation)](https://api-ratp.pierre-grimaud.fr/v3/documentation#section-Lines): 
 
     https://api-ratp.pierre-grimaud.fr/v3/metros
     
@@ -197,6 +197,40 @@ Exemple de requête pour récupérer toutes les lignes du métro [(lien vers la 
         "_metadata": {
             "call": "GET /lines/metros",
             "date": "2017-03-04T02:13:28+01:00",
+            "version": 3
+        }
+    }
+    
+## Stations
+
+Exemple de requête pour récupérer toutes les stations de la ligne 3B du métro [(lien vers la documentation)](https://api-ratp.pierre-grimaud.fr/v3/documentation#section-Stations): 
+
+    https://api-ratp.pierre-grimaud.fr/v3/stations/metros/8
+    
+    {
+        "result": {
+            "stations": [
+                {
+                    "slug": "porte+des+lilas",
+                    "name": "Porte des Lilas"
+                },
+                {
+                    "slug": "saint+fargeau",
+                    "name": "Saint-Fargeau"
+                },
+                {
+                    "slug": "pelleport",
+                    "name": "Pelleport"
+                },
+                {
+                    "slug": "gambetta",
+                    "name": "Gambetta"
+                }
+            ]
+        },
+        "_metadata": {
+            "call": "GET /stations/metros/3B",
+            "date": "2017-03-04T02:30:09+01:00",
             "version": 3
         }
     }
