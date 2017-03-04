@@ -26,11 +26,11 @@ La liste des ressources est disponible ici :
 
 Quelques exemples sont disponibles ici :
 
-[Lignes](#lignes)
-[Stations](#stations)
-[Destinations](#destinations)
-[Horaires](#horaires)
-[Trafic](#trafic)
+- [Lignes](#lignes)
+- [Stations](#stations)
+- [Destinations](#destinations)
+- [Horaires](#horaires)
+- [Trafic](#trafic)
 
 # Format
    
