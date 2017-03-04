@@ -37,10 +37,10 @@ Some examples are available here :
 - [Traffic](#traffic)
 
 # Format
-   
-De base, les données renvoyées sont disponibles au format JSON. Mais il est possible de les récupérer au format XML en ajoutant à chaque requête le paramètre **_format**.
 
-*Exemple JSON :*
+Basically, the data returned are available in JSON format. It's possible to get it as XML format by adding a parameter **_format**.
+
+*JSON Example :*
 
     GET https://api-ratp.pierre-grimaud.fr/v3/stations/metros/3B?_format=json
     
@@ -72,7 +72,7 @@ De base, les données renvoyées sont disponibles au format JSON. Mais il est po
         }
     }
 
-*Exemple XML:*
+*XML Example:*
 
     GET https://api-ratp.pierre-grimaud.fr/v3/stations/metros/3B?_format=xml
     
@@ -105,11 +105,11 @@ De base, les données renvoyées sont disponibles au format JSON. Mais il est po
       </_metadata>
     </response>
     
-# Exemples de requêtes
+# Requests examples
 
-## Lignes
+## Lines
 
-Exemple de requête pour récupérer toutes les lignes du métro [(lien vers la documentation)](https://api-ratp.pierre-grimaud.fr/v3/documentation#section-Lines): 
+Example of request to retrieve all metro lignes [(link to documentation)](https://api-ratp.pierre-grimaud.fr/v3/documentation#section-Lines): 
 
     https://api-ratp.pierre-grimaud.fr/v3/metros
     
@@ -217,7 +217,7 @@ Exemple de requête pour récupérer toutes les lignes du métro [(lien vers la 
     
 ## Stations
 
-Exemple de requête pour récupérer toutes les stations de la ligne 3B du métro [(lien vers la documentation)](https://api-ratp.pierre-grimaud.fr/v3/documentation#section-Stations): 
+Example of request to retrieve all stations of the metro line 3B [(link to documentation)](https://api-ratp.pierre-grimaud.fr/v3/documentation#section-Stations): 
 
     https://api-ratp.pierre-grimaud.fr/v3/stations/metros/3B
     
@@ -251,7 +251,7 @@ Exemple de requête pour récupérer toutes les stations de la ligne 3B du métr
     
 ## Destinations
 
-Exemple de requête pour récupérer toutes les destinations de la ligne 8 du métro [(lien vers la documentation)](https://api-ratp.pierre-grimaud.fr/v3/documentation#section-Destinations): 
+Example of request to retrieve all destinations of the metro line 3B [(link to documentation)](https://api-ratp.pierre-grimaud.fr/v3/documentation#section-Destinations): 
 
     https://api-ratp.pierre-grimaud.fr/v3/destinations/metros/8
     
@@ -275,9 +275,9 @@ Exemple de requête pour récupérer toutes les destinations de la ligne 8 du m�
         }
     }
     
-## Horaires
+## Schedules
 
-Exemple de requête pour récupérer les horaires des prochains bus de la ligne N01 en direction de gare de l'est à la station République [(lien vers la documentation)](https://api-ratp.pierre-grimaud.fr/v3/documentation#section-Schedules): 
+Example of request to retrieve next schedules of the bus line N01 at the station République on the direction of Gare de l'est  [(link to documentation)](https://api-ratp.pierre-grimaud.fr/v3/documentation#section-Schedules): 
 
     https://api-ratp.pierre-grimaud.fr/v3/schedules/noctiliens/01/republique/R
 
@@ -301,9 +301,9 @@ Exemple de requête pour récupérer les horaires des prochains bus de la ligne 
         }
     }
     
-## Trafic
+## Traffic
 
-Exemple de requête pour récupérer tout le trafic du réseau RATP [(lien vers la documentation)](https://api-ratp.pierre-grimaud.fr/v3/documentation#section-Traffic): 
+Example of request to retrieve all traffic on RATP network [(link to documentation)](https://api-ratp.pierre-grimaud.fr/v3/documentation#section-Traffic): 
 
     https://api-ratp.pierre-grimaud.fr/v3/traffic
     
