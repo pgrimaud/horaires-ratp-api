@@ -2,45 +2,45 @@
     
 ## Introduction 
 
-Cette API permet à l'utilisateur de récupérer les horaires RATP (RER, Metro, Tramway, Bus et Noctilien) en temps réel à un arrêt défini.
+This API gives you real time schedules for any given RER (train), Metro, Tramway, Bus or Noctilien stop in real time on the RATP network.
 
 ## REST
 
-    Serveur API : https://api-ratp.pierre-grimaud.fr/v3
+    API Server : https://api-ratp.pierre-grimaud.fr/v3
 
-L'API est principalement RESTful. Les données sont exposées sous la forme d'URI qui représentent des ressources et peuvent être récupérées via des clients HTTP (comme les navigateurs web).
+This API is RESTful. Data are exposed as URIs which can be retrieved with HTTP clients (such as web browsers).
 
-## Code source
+## Source code
 
-Le code source de cette API est disponible ici : [ratp-api-rest](https://github.com/pgrimaud/ratp-api-rest).
+Source code of this API is available here : [ratp-api-rest](https://github.com/pgrimaud/ratp-api-rest).
 
-Ce projet utilise la librairie [horaires-ratp-sdk](https://github.com/pgrimaud/horaires-ratp-sdk) qui exploite les données de l'API RATP officielle.
+This project uses the package [horaires-ratp-sdk](https://github.com/pgrimaud/horaires-ratp-sdk) which consume the official RATP API.
 
-## Translations
+## Traductions
 
-This README file is also available in [english](https://github.com/pgrimaud/horaires-ratp-api/README-EN.md).
+Ce README est aussi disponible en [français](https://github.com/pgrimaud/horaires-ratp-api/README.md).
 
 ## Documentation
 
-La liste des ressources est disponible ici : 
+API documentation is available here : 
 
     https://api-ratp.pierre-grimaud.fr/v3/documentation
 
-## Exemples
+## Examples
 
-Quelques exemples sont disponibles ici :
+Some examples are available here :
 
-- [Lignes](#lignes)
+- [Lines](#lines)
 - [Stations](#stations)
 - [Destinations](#destinations)
-- [Horaires](#horaires)
-- [Trafic](#trafic)
+- [Schedules](#schedules)
+- [Traffic](#traffic)
 
 # Format
-   
-De base, les données renvoyées sont disponibles au format JSON. Mais il est possible de les récupérer au format XML en ajoutant à chaque requête le paramètre **_format**.
 
-*Exemple JSON :*
+Basically, the data returned are available in JSON format. It's possible to get it as XML format by adding a parameter **_format**.
+
+*JSON Example :*
 
     GET https://api-ratp.pierre-grimaud.fr/v3/stations/metros/3B?_format=json
     
@@ -72,7 +72,7 @@ De base, les données renvoyées sont disponibles au format JSON. Mais il est po
         }
     }
 
-*Exemple XML:*
+*XML Example:*
 
     GET https://api-ratp.pierre-grimaud.fr/v3/stations/metros/3B?_format=xml
     
@@ -105,11 +105,11 @@ De base, les données renvoyées sont disponibles au format JSON. Mais il est po
       </_metadata>
     </response>
     
-# Exemples de requêtes
+# Requests examples
 
-## Lignes
+## Lines
 
-Exemple de requête pour récupérer toutes les lignes du métro [(lien vers la documentation)](https://api-ratp.pierre-grimaud.fr/v3/documentation#section-Lines): 
+Example of request to retrieve all metro lignes [(link to documentation)](https://api-ratp.pierre-grimaud.fr/v3/documentation#section-Lines): 
 
     https://api-ratp.pierre-grimaud.fr/v3/metros
     
@@ -217,7 +217,7 @@ Exemple de requête pour récupérer toutes les lignes du métro [(lien vers la 
     
 ## Stations
 
-Exemple de requête pour récupérer toutes les stations de la ligne 3B du métro [(lien vers la documentation)](https://api-ratp.pierre-grimaud.fr/v3/documentation#section-Stations): 
+Example of request to retrieve all stations of the metro line 3B [(link to documentation)](https://api-ratp.pierre-grimaud.fr/v3/documentation#section-Stations): 
 
     https://api-ratp.pierre-grimaud.fr/v3/stations/metros/3B
     
@@ -251,7 +251,7 @@ Exemple de requête pour récupérer toutes les stations de la ligne 3B du métr
     
 ## Destinations
 
-Exemple de requête pour récupérer toutes les destinations de la ligne 8 du métro [(lien vers la documentation)](https://api-ratp.pierre-grimaud.fr/v3/documentation#section-Destinations): 
+Example of request to retrieve all destinations of the metro line 3B [(link to documentation)](https://api-ratp.pierre-grimaud.fr/v3/documentation#section-Destinations): 
 
     https://api-ratp.pierre-grimaud.fr/v3/destinations/metros/8
     
@@ -275,9 +275,9 @@ Exemple de requête pour récupérer toutes les destinations de la ligne 8 du m�
         }
     }
     
-## Horaires
+## Schedules
 
-Exemple de requête pour récupérer les horaires des prochains bus de la ligne N01 en direction de gare de l'est à la station République [(lien vers la documentation)](https://api-ratp.pierre-grimaud.fr/v3/documentation#section-Schedules): 
+Example of request to retrieve next schedules of the bus line N01 at the station République on the direction of Gare de l'est  [(link to documentation)](https://api-ratp.pierre-grimaud.fr/v3/documentation#section-Schedules): 
 
     https://api-ratp.pierre-grimaud.fr/v3/schedules/noctiliens/01/republique/R
 
@@ -301,9 +301,9 @@ Exemple de requête pour récupérer les horaires des prochains bus de la ligne 
         }
     }
     
-## Trafic
+## Traffic
 
-Exemple de requête pour récupérer tout le trafic du réseau RATP [(lien vers la documentation)](https://api-ratp.pierre-grimaud.fr/v3/documentation#section-Traffic): 
+Example of request to retrieve all traffic on RATP network [(link to documentation)](https://api-ratp.pierre-grimaud.fr/v3/documentation#section-Traffic): 
 
     https://api-ratp.pierre-grimaud.fr/v3/traffic
     
@@ -499,9 +499,9 @@ Exemple de requête pour récupérer tout le trafic du réseau RATP [(lien vers 
     
 # Feedback
 
-Pour un bug, une demande de suggestion, une nouvelle fonctionnalité, etc... [create an issue](https://github.com/pgrimaud/horaires-ratp-api/issues) ou contactez moi sur [Twitter](https://twitter.com/pgrimaud_)
+You can [create an issue](https://github.com/pgrimaud/horaires-ratp-api/issues) if needed or contact me on [Twitter](https://twitter.com/pgrimaud_).
 
 
 # License
 
-Toutes les données appartiennent à la RATP et sont utilisées dans un **but strictement personnel** ou de **recherche** et non dans un but commercial.
+Licensed under the terms of the MIT License.
