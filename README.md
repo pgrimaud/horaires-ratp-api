@@ -95,7 +95,7 @@ De base, les données renvoyées sont disponibles au format JSON. Mais il est po
 
 ## Lignes
 
-Exemple de requête pour récupérer toutes les lignes du métro [(lien vers la documentation)](<https://api-ratp.pierre-grimaud.fr/v5/app_dev.php/documentation#get--lines-{type}>): 
+Exemple de requête pour récupérer toutes les lignes du métro [(lien vers la documentation)](https://api-ratp.pierre-grimaud.fr/v5/app_dev.php/documentation#get--lines-%7Btype}): 
 
     https://api-ratp.pierre-grimaud.fr/v3/metros
     
