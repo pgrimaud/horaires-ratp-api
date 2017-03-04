@@ -234,3 +234,251 @@ Exemple de requête pour récupérer toutes les stations de la ligne 3B du métr
             "version": 3
         }
     }
+    
+## Destinations
+
+Exemple de requête pour récupérer toutes les destinations de la ligne 8 du métro [(lien vers la documentation)](https://api-ratp.pierre-grimaud.fr/v3/documentation#section-Destinations): 
+
+    https://api-ratp.pierre-grimaud.fr/v3/destinations/metros/8
+    
+    {
+        "result": {
+            "destinations": [
+                {
+                    "name": "Pointe du Lac",
+                    "way": "A"
+                },
+                {
+                    "name": "Balard",
+                    "way": "R"
+                }
+            ]
+        },
+        "_metadata": {
+            "call": "GET /destinations/metros/8",
+            "date": "2017-03-04T02:36:42+01:00",
+            "version": 3
+        }
+    }
+    
+## Trafic
+
+Exemple de requête pour récupérer tout le trafic du réseau RATP [(lien vers la documentation)](https://api-ratp.pierre-grimaud.fr/v3/documentation#section-Traffic): 
+
+    https://api-ratp.pierre-grimaud.fr/v3/traffic
+    
+    {
+        "result": {
+            "metros": [
+                {
+                    "line": "1",
+                    "slug": "normal",
+                    "title": "Trafic normal",
+                    "message": "Trafic normal sur l'ensemble de la ligne."
+                },
+                {
+                    "line": "2",
+                    "slug": "normal",
+                    "title": "Trafic normal",
+                    "message": "Trafic normal sur l'ensemble de la ligne."
+                },
+                {
+                    "line": "3",
+                    "slug": "normal",
+                    "title": "Trafic normal",
+                    "message": "Trafic normal sur l'ensemble de la ligne."
+                },
+                {
+                    "line": "3B",
+                    "slug": "normal",
+                    "title": "Trafic normal",
+                    "message": "Trafic normal sur l'ensemble de la ligne."
+                },
+                {
+                    "line": "4",
+                    "slug": "normal_trav",
+                    "title": "Travaux",
+                    "message": "22:00, l'arrêt ne sera pas marqué à Alesia jusqu'au 05/03/17 fin de service. (travaux)"
+                },
+                {
+                    "line": "5",
+                    "slug": "normal",
+                    "title": "Trafic normal",
+                    "message": "Trafic normal sur l'ensemble de la ligne."
+                },
+                {
+                    "line": "6",
+                    "slug": "normal",
+                    "title": "Trafic normal",
+                    "message": "Trafic normal sur l'ensemble de la ligne."
+                },
+                {
+                    "line": "7",
+                    "slug": "normal",
+                    "title": "Trafic normal",
+                    "message": "Trafic normal sur l'ensemble de la ligne."
+                },
+                {
+                    "line": "7B",
+                    "slug": "normal",
+                    "title": "Trafic normal",
+                    "message": "Trafic normal sur l'ensemble de la ligne."
+                },
+                {
+                    "line": "8",
+                    "slug": "normal",
+                    "title": "Trafic normal",
+                    "message": "Trafic normal sur l'ensemble de la ligne."
+                },
+                {
+                    "line": "9",
+                    "slug": "normal",
+                    "title": "Trafic normal",
+                    "message": "Trafic normal sur l'ensemble de la ligne."
+                },
+                {
+                    "line": "10",
+                    "slug": "normal",
+                    "title": "Trafic normal",
+                    "message": "Trafic normal sur l'ensemble de la ligne."
+                },
+                {
+                    "line": "11",
+                    "slug": "normal",
+                    "title": "Trafic normal",
+                    "message": "Trafic normal sur l'ensemble de la ligne."
+                },
+                {
+                    "line": "12",
+                    "slug": "normal",
+                    "title": "Trafic normal",
+                    "message": "Trafic normal sur l'ensemble de la ligne."
+                },
+                {
+                    "line": "13",
+                    "slug": "normal",
+                    "title": "Trafic normal",
+                    "message": "Trafic normal sur l'ensemble de la ligne."
+                },
+                {
+                    "line": "14",
+                    "slug": "normal",
+                    "title": "Trafic normal",
+                    "message": "Trafic normal sur l'ensemble de la ligne."
+                }
+            ],
+            "rers": [
+                {
+                    "line": "A",
+                    "slug": "normal_trav",
+                    "title": "Travaux",
+                    "message": "Sam. sf Jours Fér. le trafic sera interrompu entre Nanterre-Prefecture et Cergy/ Poissy jusqu'au 04/03/17. Bus de remplacement à dispo. (travaux)"
+                },
+                {
+                    "line": "B",
+                    "slug": "normal",
+                    "title": "Trafic normal",
+                    "message": "Trafic normal sur l'ensemble de la ligne."
+                },
+                {
+                    "line": "C",
+                    "slug": "normal_trav",
+                    "title": "Travaux",
+                    "message": "À partir du lundi 23 janvier 2017 à 03h00, en raison de travaux, l'arrêt n'est pas marqué à la gare Dourdan-la-Foret sur la ligne C du RER jusqu'au vendredi 21 avril 2017 fin de service. Des bus de remplacement sont mis à disposition."
+                },
+                {
+                    "line": "D",
+                    "slug": "normal",
+                    "title": "Trafic normal",
+                    "message": "Trafic normal sur l'ensemble de la ligne."
+                },
+                {
+                    "line": "E",
+                    "slug": "normal",
+                    "title": "Trafic normal",
+                    "message": "Trafic normal sur l'ensemble de la ligne."
+                }
+            ],
+            "tramways": [
+                {
+                    "line": "1",
+                    "slug": "normal",
+                    "title": "Trafic normal",
+                    "message": "Trafic normal sur l'ensemble de la ligne."
+                },
+                {
+                    "line": "2",
+                    "slug": "normal",
+                    "title": "Trafic normal",
+                    "message": "Trafic normal sur l'ensemble de la ligne."
+                },
+                {
+                    "line": "3A",
+                    "slug": "normal",
+                    "title": "Trafic normal",
+                    "message": "Trafic normal sur l'ensemble de la ligne."
+                },
+                {
+                    "line": "3B",
+                    "slug": "normal",
+                    "title": "Trafic normal",
+                    "message": "Trafic normal sur l'ensemble de la ligne."
+                },
+                {
+                    "line": "5",
+                    "slug": "normal",
+                    "title": "Trafic normal",
+                    "message": "Trafic normal sur l'ensemble de la ligne."
+                },
+                {
+                    "line": "6",
+                    "slug": "normal",
+                    "title": "Trafic normal",
+                    "message": "Trafic normal sur l'ensemble de la ligne."
+                },
+                {
+                    "line": "7",
+                    "slug": "normal",
+                    "title": "Trafic normal",
+                    "message": "Trafic normal sur l'ensemble de la ligne."
+                },
+                {
+                    "line": "8",
+                    "slug": "normal",
+                    "title": "Trafic normal",
+                    "message": "Trafic normal sur l'ensemble de la ligne."
+                }
+            ]
+        },
+        "_metadata": {
+            "call": "GET /traffic",
+            "date": "2017-03-04T02:42:00+01:00",
+            "version": 3
+        }
+    }
+    
+## Horaires
+
+Exemple de requête pour récupérer les horaires des prochains bus de la ligne N01 en direction de gare de l'est à la station République [(lien vers la documentation)](https://api-ratp.pierre-grimaud.fr/v3/documentation#section-Schedules): 
+
+    https://api-ratp.pierre-grimaud.fr/v3/schedules/noctiliens/01/republique/R
+
+    {
+        "result": {
+            "schedules": [
+                {
+                    "message": "4 mn",
+                    "destination": "Gare de l'Est"
+                },
+                {
+                    "message": "5 mn",
+                    "destination": "Gare de l'Est"
+                }
+            ]
+        },
+        "_metadata": {
+            "call": "GET /schedules/noctiliens/01/republique/R",
+            "date": "2017-03-04T02:49:26+01:00",
+            "version": 3
+        }
+    }
