@@ -21,7 +21,17 @@ Ce projet utilise la librairie [horaires-ratp-sdk](https://github.com/pgrimaud/h
 La liste des ressources est disponible ici : 
 
     https://api-ratp.pierre-grimaud.fr/v3/documentation
-    
+
+## Exemples
+
+Quelques exemples sont disponibles ici :
+
+[Lignes](#lignes)
+[Stations](#stations)
+[Destinations](#destinations)
+[Horaires](#horaires)
+[Trafic](#trafic)
+
 # Format
    
 De base, les données renvoyées sont disponibles au format JSON. Mais il est possible de les récupérer au format XML en ajoutant à chaque requête le paramètre **_format**.
@@ -205,7 +215,7 @@ Exemple de requête pour récupérer toutes les lignes du métro [(lien vers la 
 
 Exemple de requête pour récupérer toutes les stations de la ligne 3B du métro [(lien vers la documentation)](https://api-ratp.pierre-grimaud.fr/v3/documentation#section-Stations): 
 
-    https://api-ratp.pierre-grimaud.fr/v3/stations/metros/8
+    https://api-ratp.pierre-grimaud.fr/v3/stations/metros/3B
     
     {
         "result": {
@@ -257,6 +267,32 @@ Exemple de requête pour récupérer toutes les destinations de la ligne 8 du m�
         "_metadata": {
             "call": "GET /destinations/metros/8",
             "date": "2017-03-04T02:36:42+01:00",
+            "version": 3
+        }
+    }
+    
+## Horaires
+
+Exemple de requête pour récupérer les horaires des prochains bus de la ligne N01 en direction de gare de l'est à la station République [(lien vers la documentation)](https://api-ratp.pierre-grimaud.fr/v3/documentation#section-Schedules): 
+
+    https://api-ratp.pierre-grimaud.fr/v3/schedules/noctiliens/01/republique/R
+
+    {
+        "result": {
+            "schedules": [
+                {
+                    "message": "4 mn",
+                    "destination": "Gare de l'Est"
+                },
+                {
+                    "message": "5 mn",
+                    "destination": "Gare de l'Est"
+                }
+            ]
+        },
+        "_metadata": {
+            "call": "GET /schedules/noctiliens/01/republique/R",
+            "date": "2017-03-04T02:49:26+01:00",
             "version": 3
         }
     }
@@ -457,28 +493,11 @@ Exemple de requête pour récupérer tout le trafic du réseau RATP [(lien vers 
         }
     }
     
-## Horaires
+# Feedback
 
-Exemple de requête pour récupérer les horaires des prochains bus de la ligne N01 en direction de gare de l'est à la station République [(lien vers la documentation)](https://api-ratp.pierre-grimaud.fr/v3/documentation#section-Schedules): 
+Pour un bug, une demande de suggestion, une nouvelle fonctionnalité, etc... [create an issue](https://github.com/pgrimaud/horaires-ratp-api/issues) ou contactez moi sur [Twitter](https://twitter.com/pgrimaud_)
 
-    https://api-ratp.pierre-grimaud.fr/v3/schedules/noctiliens/01/republique/R
 
-    {
-        "result": {
-            "schedules": [
-                {
-                    "message": "4 mn",
-                    "destination": "Gare de l'Est"
-                },
-                {
-                    "message": "5 mn",
-                    "destination": "Gare de l'Est"
-                }
-            ]
-        },
-        "_metadata": {
-            "call": "GET /schedules/noctiliens/01/republique/R",
-            "date": "2017-03-04T02:49:26+01:00",
-            "version": 3
-        }
-    }
+# License
+
+Toutes les données appartiennent à la RATP et sont utilisées dans un **but strictement personnel** ou de **recherche** et non dans un but commercial.
