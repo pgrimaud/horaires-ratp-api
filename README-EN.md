@@ -111,7 +111,7 @@ Basically, the data returned are available in JSON format. It's possible to get 
 
 Example of request to retrieve all metro lignes [(link to documentation)](https://api-ratp.pierre-grimaud.fr/v3/documentation#section-Lines): 
 
-    https://api-ratp.pierre-grimaud.fr/v3/metros
+    https://api-ratp.pierre-grimaud.fr/v3/lines/metros
     
     {
         "result": {
