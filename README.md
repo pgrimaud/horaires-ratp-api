@@ -1,7 +1,4 @@
 # Horaires RATP API
-    
-## Information importante (2017-06-16)
-### À la demande des ayants droits, l'API v2 n'est plus disponible. Je vous invite donc à migrer vers la v3 dès que possible. Désolé pour les inconvénients.
 
 ## Introduction 
 
@@ -538,6 +535,8 @@ Exemple de requête pour récupérer tout le trafic du réseau RATP [(lien vers 
 
 Pour un bug, une demande de suggestion, une nouvelle fonctionnalité, etc... [create an issue](https://github.com/pgrimaud/horaires-ratp-api/issues) ou contactez moi sur [Twitter](https://twitter.com/pgrimaud_)
 
+# Information importante (2017-06-16)
+### À la demande des ayants droits, l'API v2 n'est plus disponible. Je vous invite donc à migrer vers la v3 dès que possible. Désolé pour les inconvénients.
 
 # License
 

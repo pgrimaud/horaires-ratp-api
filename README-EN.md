@@ -1,8 +1,5 @@
 # Horaires RATP API
 
-## Important information (2017-06-16)
-### API v2 has been brutally takedown for legal reasons. You must upgrade to v3 as soon as possible. Sorry for inconvenience.
-
 ## Introduction 
 
 This API gives you real time schedules for any given RER (train), Metro, Tramway, Bus or Noctilien stop in real time on the RATP network.
@@ -537,6 +534,8 @@ Example of request to retrieve all traffic on RATP network [(link to documentati
 
 You can [create an issue](https://github.com/pgrimaud/horaires-ratp-api/issues) if needed or contact me on [Twitter](https://twitter.com/pgrimaud_).
 
+# Important information (2017-06-16)
+### API v2 has been brutally takedown for legal reasons. You must upgrade to v3 as soon as possible. Sorry for inconvenience.
 
 # License
 
