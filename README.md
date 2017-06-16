@@ -1,5 +1,8 @@
 # Horaires RATP API
     
+## Information importante (2017-06-16)
+### À la demande des ayants droits, l'API v2 n'est plus disponible. Je vous invite donc à migrer vers la v3 dès que possible. Désolé pour les inconvénients.
+
 ## Introduction 
 
 Cette API permet à l'utilisateur de récupérer les horaires RATP (RER, Metro, Tramway, Bus et Noctilien) en temps réel à un arrêt défini.
