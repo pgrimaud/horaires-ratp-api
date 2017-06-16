@@ -18,7 +18,7 @@ This project uses the package [horaires-ratp-sdk](https://github.com/pgrimaud/ho
 
 ## Traductions
 
-Ce README est aussi disponible en [français](https://github.com/pgrimaud/horaires-ratp-api/README.md).
+Ce README est aussi disponible en [français](https://github.com/pgrimaud/horaires-ratp-api/blob/master/README.md).
 
 ## Documentation
 
