@@ -24,7 +24,7 @@
           <% _.map(horaires, function (horaire, i) { %>
             <tr class="<% if(i%2) { %>bg-tr <% } %>tr-normal">
               <td class="td1"><p><%= horaire.destination %></p></td>
-              <td class="td2"><p><%= horaire.id %></p></td>
+              <td class="td2"><p><%= horaire.code %></p></td>
               <td class="td3"><p><%= horaire.message %></p></td>
             </tr>
           <% }) %>

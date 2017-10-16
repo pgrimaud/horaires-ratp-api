@@ -1,7 +1,4 @@
-
 # Écran RATP
-
-
 
 ![Screenshot écran ratp](http://i.imgur.com/m9wJIzph.png)
 
