@@ -26,6 +26,14 @@ API documentation is available here :
 
     https://api-ratp.pierre-grimaud.fr/v3/documentation
 
+## Bugs
+
+Schedules of RER C, D et E don't work properly and return this error : 
+```
+Time information is not available at this time. We apologize for the inconvenience.
+```
+
+
 ## Examples
 
 Some examples are available here :

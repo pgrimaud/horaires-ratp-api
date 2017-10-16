@@ -26,6 +26,13 @@ La liste des ressources est disponible ici :
 
     https://api-ratp.pierre-grimaud.fr/v3/documentation
 
+## Bugs
+
+Les horaires des RER C, D et E ne fonctionnent pas et sont renvoyés avec l'erreur suivante : 
+```
+Les informations horaires ne sont pas disponibles pour le moment. Veuillez nous excuser pour la gêne occasionnée.
+```
+
 ## Exemples
 
 Quelques exemples sont disponibles ici :
