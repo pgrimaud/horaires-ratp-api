@@ -6,7 +6,7 @@ This API gives you real time schedules for any given RER (train), Metro, Tramway
 
 ## REST
 
-    API Server : https://api-ratp.pierre-grimaud.fr/v3
+    API Server : https://api-ratp.pierre-grimaud.fr/v4/
 
 This API is RESTful. Data are exposed as URIs which can be retrieved with HTTP clients (such as web browsers).
 
@@ -24,15 +24,28 @@ Ce README est aussi disponible en [français](https://github.com/pgrimaud/horair
 
 API documentation is available here : 
 
-    https://api-ratp.pierre-grimaud.fr/v3/documentation
+    https://api-ratp.pierre-grimaud.fr/v4/
 
 ## Bugs
 
 Schedules of RER C, D et E don't work properly and return this error : 
 ```
-Time information is not available at this time. We apologize for the inconvenience.
+Time information is not available at this time.
 ```
 
+# Format
+
+Basically, the data returned are available in JSON format. It's possible to get it as XML format by adding a header `Accept: application/xml` parameter in request.
+
+JSON example : 
+```
+curl -X GET "https://api-ratp.pierre-grimaud.fr/v4/stations/metros/3b"
+```
+
+XML example : 
+```
+curl -X GET "https://api-ratp.pierre-grimaud.fr/v4/stations/metros/3b" -H "Accept: application/xml"
+```
 
 ## Examples
 
@@ -44,76 +57,72 @@ Some examples are available here :
 - [Schedules](#schedules)
 - [Traffic](#traffic)
 
-# Format
-
-Basically, the data returned are available in JSON format. It's possible to get it as XML format by adding a parameter **_format**.
-
 *JSON Example :*
 
-    GET https://api-ratp.pierre-grimaud.fr/v3/stations/metros/3B?_format=json
-    
+    GET https://api-ratp.pierre-grimaud.fr/v4/stations/metros/3b
+
 ```json
 {
     "result": {
         "stations": [
             {
-                "slug": "porte+des+lilas",
-                "name": "Porte des Lilas"
+                "name": "Porte des Lilas",
+                "slug": "porte+des+lilas"
             },
             {
-                "slug": "saint+fargeau",
-                "name": "Saint-Fargeau"
+                "name": "Saint-Fargeau",
+                "slug": "saint+fargeau"
             },
             {
-                "slug": "pelleport",
-                "name": "Pelleport"
+                "name": "Pelleport",
+                "slug": "pelleport"
             },
             {
-                "slug": "gambetta",
-                "name": "Gambetta"
+                "name": "Gambetta",
+                "slug": "gambetta"
             }
         ]
     },
     "_metadata": {
-        "call": "GET /stations/metros/3B",
-        "date": "2017-03-04T02:02:32+01:00",
-        "version": 3
+        "call": "GET /stations/metros/3b",
+        "date": "2019-06-02T20:07:24+02:00",
+        "version": 4
     }
 }
 ```
 
 *XML Example:*
 
-    GET https://api-ratp.pierre-grimaud.fr/v3/stations/metros/3B?_format=xml
+    GET https://api-ratp.pierre-grimaud.fr/v4/stations/metros/3b
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <response>
-  <result>
-    <stations>
-      <entry>
-        <slug><![CDATA[porte+des+lilas]]></slug>
-        <name><![CDATA[Porte des Lilas]]></name>
-      </entry>
-      <entry>
-        <slug><![CDATA[saint+fargeau]]></slug>
-        <name><![CDATA[Saint-Fargeau]]></name>
-      </entry>
-      <entry>
-        <slug><![CDATA[pelleport]]></slug>
-        <name><![CDATA[Pelleport]]></name>
-      </entry>
-      <entry>
-        <slug><![CDATA[gambetta]]></slug>
-        <name><![CDATA[Gambetta]]></name>
-      </entry>
-    </stations>
-  </result>
-  <_metadata>
-    <call><![CDATA[GET /stations/metros/3B]]></call>
-    <date><![CDATA[2017-03-04T02:04:33+01:00]]></date>
-    <version>3</version>
-  </_metadata>
+<result>
+  <stations>
+    <entry>
+      <name><![CDATA[Porte des Lilas]]></name>
+      <slug><![CDATA[porte+des+lilas]]></slug>
+    </entry>
+    <entry>
+      <name><![CDATA[Saint-Fargeau]]></name>
+      <slug><![CDATA[saint+fargeau]]></slug>
+    </entry>
+    <entry>
+      <name><![CDATA[Pelleport]]></name>
+      <slug><![CDATA[pelleport]]></slug>
+    </entry>
+    <entry>
+      <name><![CDATA[Gambetta]]></name>
+      <slug><![CDATA[gambetta]]></slug>
+    </entry>
+  </stations>
+</result>
+<_metadata>
+  <call><![CDATA[GET /stations/metros/3b]]></call>
+  <date><![CDATA[2019-06-02T20:14:41+02:00]]></date>
+  <version>4</version>
+</_metadata>
 </response>
 ```
 
@@ -121,429 +130,433 @@ Basically, the data returned are available in JSON format. It's possible to get 
 
 ## Lines
 
-Example of request to retrieve all metro lignes [(link to documentation)](https://api-ratp.pierre-grimaud.fr/v3/documentation#section-Lines): 
+Example of request to retrieve all metro lines : 
 
-    GET https://api-ratp.pierre-grimaud.fr/v3/lines/metros
+    GET https://api-ratp.pierre-grimaud.fr/v4/lines/metros
     
 ```json
-
 {
-    "result": {
-        "metros": [
-            {
-                "code": "1",
-                "name": "Métro 1",
-                "directions": "La Defense / Chateau de Vincennes",
-                "id": "62"
-            },
-            {
-                "code": "2",
-                "name": "Métro 2",
-                "directions": "Porte Dauphine / Nation",
-                "id": "67"
-            },
-            {
-                "code": "3",
-                "name": "Métro 3",
-                "directions": "Pont de Levallois - Becon / Gallieni",
-                "id": "68"
-            },
-            {
-                "code": "3b",
-                "name": "Métro 3b",
-                "directions": "Gambetta / Porte des Lilas",
-                "id": "69"
-            },
-            {
-                "code": "4",
-                "name": "Métro 4",
-                "directions": "Mairie de Montrouge / Porte de Clignancourt",
-                "id": "70"
-            },
-            {
-                "code": "5",
-                "name": "Métro 5",
-                "directions": "Place d'Italie / Bobigny - Pablo Picasso",
-                "id": "71"
-            },
-            {
-                "code": "6",
-                "name": "Métro 6",
-                "directions": "Charles de Gaulle - Etoile / Nation",
-                "id": "72"
-            },
-            {
-                "code": "7",
-                "name": "Métro 7",
-                "directions": "Villejuif-L. Aragon / Mairie d'Ivry / la Courneuve - 8 Mai 1945",
-                "id": "73"
-            },
-            {
-                "code": "7b",
-                "name": "Métro 7b",
-                "directions": "Louis Blanc / Pre-Saint-Gervais",
-                "id": "74"
-            },
-            {
-                "code": "8",
-                "name": "Métro 8",
-                "directions": "Pointe du Lac / Balard",
-                "id": "172562"
-            },
-            {
-                "code": "9",
-                "name": "Métro 9",
-                "directions": "Mairie de Montreuil / Pont de Sevres",
-                "id": "76"
-            },
-            {
-                "code": "10",
-                "name": "Métro 10",
-                "directions": "Gare d'Austerlitz / Boulogne - Pont de Saint Cloud",
-                "id": "63"
-            },
-            {
-                "code": "11",
-                "name": "Métro 11",
-                "directions": "Chatelet / Mairie des Lilas",
-                "id": "64"
-            },
-            {
-                "code": "12",
-                "name": "Métro 12",
-                "directions": "Front Populaire / Mairie d'Issy",
-                "id": "65"
-            },
-            {
-                "code": "13",
-                "name": "Métro 13",
-                "directions": "St-Denis-Universite/Les Courtilles / Chatillon - Montrouge",
-                "id": "66"
-            },
-            {
-                "code": "14",
-                "name": "Métro 14",
-                "directions": "Olympiades / Saint-Lazare",
-                "id": "55098"
-            },
-            {
-                "code": "Fun",
-                "name": "Métro Fun",
-                "directions": "Funiculaire",
-                "id": "79"
-            },
-            {
-                "code": "Orv",
-                "name": "Métro Orv",
-                "directions": "Orly Sud / Antony-RER",
-                "id": "455"
-            }
-        ]
-    },
-    "_metadata": {
-        "call": "GET /lines/metros",
-        "date": "2017-03-17T11:12:02+01:00",
-        "version": 3
-    }
+  "result": {
+    "metros": [
+      {
+        "code": "1",
+        "name": "Métro 1",
+        "directions": "La Defense / Chateau de Vincennes",
+        "id": "62"
+      },
+      {
+        "code": "2",
+        "name": "Métro 2",
+        "directions": "Porte Dauphine / Nation",
+        "id": "67"
+      },
+      {
+        "code": "3",
+        "name": "Métro 3",
+        "directions": "Pont de Levallois - Becon / Gallieni",
+        "id": "68"
+      },
+      {
+        "code": "3b",
+        "name": "Métro 3b",
+        "directions": "Gambetta / Porte des Lilas",
+        "id": "69"
+      },
+      {
+        "code": "4",
+        "name": "Métro 4",
+        "directions": "Mairie de Montrouge / Porte de Clignancourt",
+        "id": "70"
+      },
+      {
+        "code": "5",
+        "name": "Métro 5",
+        "directions": "Place d'Italie / Bobigny - Pablo Picasso",
+        "id": "71"
+      },
+      {
+        "code": "6",
+        "name": "Métro 6",
+        "directions": "Charles de Gaulle - Etoile / Nation",
+        "id": "72"
+      },
+      {
+        "code": "7",
+        "name": "Métro 7",
+        "directions": "Villejuif-L. Aragon / Mairie d'Ivry / la Courneuve - 8 Mai 1945",
+        "id": "73"
+      },
+      {
+        "code": "7b",
+        "name": "Métro 7b",
+        "directions": "Louis Blanc / Pre-Saint-Gervais",
+        "id": "74"
+      },
+      {
+        "code": "8",
+        "name": "Métro 8",
+        "directions": "Pointe du Lac / Balar",
+        "id": "172562"
+      },
+      {
+        "code": "9",
+        "name": "Métro 9",
+        "directions": "Mairie de Montreuil / Pont de Sevres",
+        "id": "76"
+      },
+      {
+        "code": "10",
+        "name": "Métro 10",
+        "directions": "Gare d'Austerlitz / Boulogne - Pont de Saint Cloud",
+        "id": "63"
+      },
+      {
+        "code": "11",
+        "name": "Métro 11",
+        "directions": "Chatelet / Mairie des Lilas",
+        "id": "64"
+      },
+      {
+        "code": "12",
+        "name": "Métro 12",
+        "directions": "Front Populaire / Mairie d'Issy",
+        "id": "65"
+      },
+      {
+        "code": "13",
+        "name": "Métro 13",
+        "directions": "St-Denis-Universite/Les Courtilles / Chatillon - Montrouge",
+        "id": "66"
+      },
+      {
+        "code": "14",
+        "name": "Métro 14",
+        "directions": "Olympiades / Saint-Lazare",
+        "id": "55098"
+      },
+      {
+        "code": "Fun",
+        "name": "Métro Fun",
+        "directions": "Funiculaire",
+        "id": "79"
+      },
+      {
+        "code": "Orv",
+        "name": "Métro Orv",
+        "directions": "Orly 4 / Antony-RER",
+        "id": "455"
+      }
+    ]
+  },
+  "_metadata": {
+    "call": "GET /lines/metros",
+    "date": "2019-06-02T20:15:55+02:00",
+    "version": 4
+  }
 }
 ```
 
 ## Stations
 
-Example of request to retrieve all stations of the metro line 3B [(link to documentation)](https://api-ratp.pierre-grimaud.fr/v3/documentation#section-Stations): 
+Example of request to retrieve all stations of the metro line 3b : 
 
-    GET https://api-ratp.pierre-grimaud.fr/v3/stations/metros/3B
+    GET https://api-ratp.pierre-grimaud.fr/v4/stations/metros/3b
 
 ```json
 {
     "result": {
         "stations": [
             {
-                "slug": "porte+des+lilas",
-                "name": "Porte des Lilas"
+                "name": "Porte des Lilas",
+                "slug": "porte+des+lilas"
             },
             {
-                "slug": "saint+fargeau",
-                "name": "Saint-Fargeau"
+                "name": "Saint-Fargeau",
+                "slug": "saint+fargeau"
             },
             {
-                "slug": "pelleport",
-                "name": "Pelleport"
+                "name": "Pelleport",
+                "slug": "pelleport"
             },
             {
-                "slug": "gambetta",
-                "name": "Gambetta"
+                "name": "Gambetta",
+                "slug": "gambetta"
             }
         ]
     },
     "_metadata": {
-        "call": "GET /stations/metros/3B",
-        "date": "2017-03-04T02:30:09+01:00",
-        "version": 3
+        "call": "GET /stations/metros/3b",
+        "date": "2019-06-02T20:07:24+02:00",
+        "version": 4
     }
 }
 ```
 
 ## Destinations
 
-Example of request to retrieve all destinations of the metro line 3B [(link to documentation)](https://api-ratp.pierre-grimaud.fr/v3/documentation#section-Destinations): 
+Example of request to retrieve all destinations of the metro line 8 : 
 
-    GET https://api-ratp.pierre-grimaud.fr/v3/destinations/metros/8
+    GET https://api-ratp.pierre-grimaud.fr/v4/destinations/metros/8
 
 ```json
 {
-    "result": {
-        "destinations": [
-            {
-                "name": "Pointe du Lac",
-                "way": "A"
-            },
-            {
-                "name": "Balard",
-                "way": "R"
-            }
-        ]
-    },
-    "_metadata": {
-        "call": "GET /destinations/metros/8",
-        "date": "2017-03-04T02:36:42+01:00",
-        "version": 3
-    }
+  "result": {
+    "destinations": [
+      {
+        "name": "Pointe du Lac",
+        "way": "A"
+      },
+      {
+        "name": "Balard",
+        "way": "R"
+      }
+    ]
+  },
+  "_metadata": {
+    "call": "GET /destinations/metros/8",
+    "date": "2019-06-02T20:16:52+02:00",
+    "version": 4
+  }
 }
 ```
 
 ## Schedules
 
-Example of request to retrieve next schedules of the bus line N01 at the station République on the direction of Gare de l'est  [(link to documentation)](https://api-ratp.pierre-grimaud.fr/v3/documentation#section-Schedules): 
+Example of request to retrieve next schedules of the metro line 8 at the station Daumesnil on the direction of Balard : 
 
-    GET https://api-ratp.pierre-grimaud.fr/v3/schedules/noctiliens/01/republique/R
+    GET https://api-ratp.pierre-grimaud.fr/v4/schedules/metros/8/daumesnil/R
 
 ```json
 {
-    "result": {
-        "schedules": [
-            {
-                "message": "4 mn",
-                "destination": "Gare de l'Est"
-            },
-            {
-                "message": "5 mn",
-                "destination": "Gare de l'Est"
-            }
-        ]
-    },
-    "_metadata": {
-        "call": "GET /schedules/noctiliens/01/republique/R",
-        "date": "2017-03-04T02:49:26+01:00",
-        "version": 3
-    }
+  "result": {
+    "schedules": [
+      {
+        "message": "1 mn",
+        "destination": "Balard"
+      },
+      {
+        "message": "8 mn",
+        "destination": "Balard"
+      },
+      {
+        "message": "13 mn",
+        "destination": "Balard"
+      },
+      {
+        "message": "19 mn",
+        "destination": "Balard"
+      }
+    ]
+  },
+  "_metadata": {
+    "call": "GET /schedules/metros/8/daumesnil/R",
+    "date": "2019-06-02T20:17:39+02:00",
+    "version": 4
+  }
 }
 ```
 
 ## Traffic
 
-Example of request to retrieve all traffic on RATP network [(link to documentation)](https://api-ratp.pierre-grimaud.fr/v3/documentation#section-Traffic): 
+Example of request to retrieve all traffic on RATP network : 
 
-    GET https://api-ratp.pierre-grimaud.fr/v3/traffic
+    GET https://api-ratp.pierre-grimaud.fr/v4/traffic
 
 ```json
 {
-    "result": {
-        "metros": [
-            {
-                "line": "1",
-                "slug": "normal",
-                "title": "Trafic normal",
-                "message": "Trafic normal sur l'ensemble de la ligne."
-            },
-            {
-                "line": "2",
-                "slug": "normal",
-                "title": "Trafic normal",
-                "message": "Trafic normal sur l'ensemble de la ligne."
-            },
-            {
-                "line": "3",
-                "slug": "normal",
-                "title": "Trafic normal",
-                "message": "Trafic normal sur l'ensemble de la ligne."
-            },
-            {
-                "line": "3B",
-                "slug": "normal",
-                "title": "Trafic normal",
-                "message": "Trafic normal sur l'ensemble de la ligne."
-            },
-            {
-                "line": "4",
-                "slug": "normal_trav",
-                "title": "Travaux",
-                "message": "22:00, l'arrêt ne sera pas marqué à Alesia jusqu'au 05/03/17 fin de service. (travaux)"
-            },
-            {
-                "line": "5",
-                "slug": "normal",
-                "title": "Trafic normal",
-                "message": "Trafic normal sur l'ensemble de la ligne."
-            },
-            {
-                "line": "6",
-                "slug": "normal",
-                "title": "Trafic normal",
-                "message": "Trafic normal sur l'ensemble de la ligne."
-            },
-            {
-                "line": "7",
-                "slug": "normal",
-                "title": "Trafic normal",
-                "message": "Trafic normal sur l'ensemble de la ligne."
-            },
-            {
-                "line": "7B",
-                "slug": "normal",
-                "title": "Trafic normal",
-                "message": "Trafic normal sur l'ensemble de la ligne."
-            },
-            {
-                "line": "8",
-                "slug": "normal",
-                "title": "Trafic normal",
-                "message": "Trafic normal sur l'ensemble de la ligne."
-            },
-            {
-                "line": "9",
-                "slug": "normal",
-                "title": "Trafic normal",
-                "message": "Trafic normal sur l'ensemble de la ligne."
-            },
-            {
-                "line": "10",
-                "slug": "normal",
-                "title": "Trafic normal",
-                "message": "Trafic normal sur l'ensemble de la ligne."
-            },
-            {
-                "line": "11",
-                "slug": "normal",
-                "title": "Trafic normal",
-                "message": "Trafic normal sur l'ensemble de la ligne."
-            },
-            {
-                "line": "12",
-                "slug": "normal",
-                "title": "Trafic normal",
-                "message": "Trafic normal sur l'ensemble de la ligne."
-            },
-            {
-                "line": "13",
-                "slug": "normal",
-                "title": "Trafic normal",
-                "message": "Trafic normal sur l'ensemble de la ligne."
-            },
-            {
-                "line": "14",
-                "slug": "normal",
-                "title": "Trafic normal",
-                "message": "Trafic normal sur l'ensemble de la ligne."
-            }
-        ],
-        "rers": [
-            {
-                "line": "A",
-                "slug": "normal_trav",
-                "title": "Travaux",
-                "message": "Sam. sf Jours Fér. le trafic sera interrompu entre Nanterre-Prefecture et Cergy/ Poissy jusqu'au 04/03/17. Bus de remplacement à dispo. (travaux)"
-            },
-            {
-                "line": "B",
-                "slug": "normal",
-                "title": "Trafic normal",
-                "message": "Trafic normal sur l'ensemble de la ligne."
-            },
-            {
-                "line": "C",
-                "slug": "normal_trav",
-                "title": "Travaux",
-                "message": "À partir du lundi 23 janvier 2017 à 03h00, en raison de travaux, l'arrêt n'est pas marqué à la gare Dourdan-la-Foret sur la ligne C du RER jusqu'au vendredi 21 avril 2017 fin de service. Des bus de remplacement sont mis à disposition."
-            },
-            {
-                "line": "D",
-                "slug": "normal",
-                "title": "Trafic normal",
-                "message": "Trafic normal sur l'ensemble de la ligne."
-            },
-            {
-                "line": "E",
-                "slug": "normal",
-                "title": "Trafic normal",
-                "message": "Trafic normal sur l'ensemble de la ligne."
-            }
-        ],
-        "tramways": [
-            {
-                "line": "1",
-                "slug": "normal",
-                "title": "Trafic normal",
-                "message": "Trafic normal sur l'ensemble de la ligne."
-            },
-            {
-                "line": "2",
-                "slug": "normal",
-                "title": "Trafic normal",
-                "message": "Trafic normal sur l'ensemble de la ligne."
-            },
-            {
-                "line": "3A",
-                "slug": "normal",
-                "title": "Trafic normal",
-                "message": "Trafic normal sur l'ensemble de la ligne."
-            },
-            {
-                "line": "3B",
-                "slug": "normal",
-                "title": "Trafic normal",
-                "message": "Trafic normal sur l'ensemble de la ligne."
-            },
-            {
-                "line": "5",
-                "slug": "normal",
-                "title": "Trafic normal",
-                "message": "Trafic normal sur l'ensemble de la ligne."
-            },
-            {
-                "line": "6",
-                "slug": "normal",
-                "title": "Trafic normal",
-                "message": "Trafic normal sur l'ensemble de la ligne."
-            },
-            {
-                "line": "7",
-                "slug": "normal",
-                "title": "Trafic normal",
-                "message": "Trafic normal sur l'ensemble de la ligne."
-            },
-            {
-                "line": "8",
-                "slug": "normal",
-                "title": "Trafic normal",
-                "message": "Trafic normal sur l'ensemble de la ligne."
-            }
-        ]
-    },
-    "_metadata": {
-        "call": "GET /traffic",
-        "date": "2017-03-04T02:42:00+01:00",
-        "version": 3
-    }
+  "result": {
+    "metros": [
+      {
+        "line": "1",
+        "slug": "alerte",
+        "title": "Trafic perturbé",
+        "message": "02/06/19, 09:02, la station George V est fermée (mesure de sécurité)"
+      },
+      {
+        "line": "2",
+        "slug": "normal",
+        "title": "Trafic normal",
+        "message": "Trafic normal sur l'ensemble de la ligne."
+      },
+      {
+        "line": "3",
+        "slug": "normal",
+        "title": "Trafic normal",
+        "message": "Trafic normal sur l'ensemble de la ligne."
+      },
+      {
+        "line": "3b",
+        "slug": "normal",
+        "title": "Trafic normal",
+        "message": "Trafic normal sur l'ensemble de la ligne."
+      },
+      {
+        "line": "4",
+        "slug": "normal_trav",
+        "title": "Travaux",
+        "message": "Dim. le trafic est interrompu sur la ligne de 05:20 à 10:00 jusqu'au 28/07/19. (travaux)"
+      },
+      {
+        "line": "5",
+        "slug": "normal_trav",
+        "title": "Travaux",
+        "message": "Ts les jours la station Breguet-Sabin est fermée jusqu'au 30/06/19. (travaux)"
+      },
+      {
+        "line": "6",
+        "slug": "normal",
+        "title": "Trafic normal",
+        "message": "Trafic normal sur l'ensemble de la ligne."
+      },
+      {
+        "line": "7",
+        "slug": "normal",
+        "title": "Trafic normal",
+        "message": "Trafic normal sur l'ensemble de la ligne."
+      },
+      {
+        "line": "7B",
+        "slug": "normal",
+        "title": "Trafic normal",
+        "message": "Trafic normal sur l'ensemble de la ligne."
+      },
+      {
+        "line": "8",
+        "slug": "normal",
+        "title": "Trafic normal",
+        "message": "Trafic normal sur l'ensemble de la ligne."
+      },
+      {
+        "line": "9",
+        "slug": "normal",
+        "title": "Trafic normal",
+        "message": "Trafic normal sur l'ensemble de la ligne."
+      },
+      {
+        "line": "10",
+        "slug": "normal",
+        "title": "Trafic normal",
+        "message": "Trafic normal sur l'ensemble de la ligne."
+      },
+      {
+        "line": "11",
+        "slug": "normal_trav",
+        "title": "Travaux",
+        "message": "Ts les jours l'arrêt n'est pas marqué à Chatelet jusqu'au 16/12/19. (travaux)"
+      },
+      {
+        "line": "12",
+        "slug": "normal",
+        "title": "Trafic normal",
+        "message": "Trafic normal sur l'ensemble de la ligne."
+      },
+      {
+        "line": "13",
+        "slug": "normal",
+        "title": "Trafic normal",
+        "message": "Trafic normal sur l'ensemble de la ligne."
+      },
+      {
+        "line": "14",
+        "slug": "normal",
+        "title": "Trafic normal",
+        "message": "Trafic normal sur l'ensemble de la ligne."
+      }
+    ],
+    "rers": [
+      {
+        "line": "A",
+        "slug": "normal",
+        "title": "Trafic normal",
+        "message": "Trafic normal sur l'ensemble de la ligne."
+      },
+      {
+        "line": "B",
+        "slug": "normal",
+        "title": "Trafic normal",
+        "message": "Trafic normal sur l'ensemble de la ligne."
+      },
+      {
+        "line": "C",
+        "slug": "normal",
+        "title": "Trafic normal",
+        "message": "Trafic normal sur l'ensemble de la ligne."
+      },
+      {
+        "line": "D",
+        "slug": "normal",
+        "title": "Trafic normal",
+        "message": "Trafic normal sur l'ensemble de la ligne."
+      },
+      {
+        "line": "E",
+        "slug": "normal",
+        "title": "Trafic normal",
+        "message": "Trafic normal sur l'ensemble de la ligne."
+      }
+    ],
+    "tramways": [
+      {
+        "line": "1",
+        "slug": "normal",
+        "title": "Trafic normal",
+        "message": "Trafic normal sur l'ensemble de la ligne."
+      },
+      {
+        "line": "2",
+        "slug": "normal",
+        "title": "Trafic normal",
+        "message": "Trafic normal sur l'ensemble de la ligne."
+      },
+      {
+        "line": "3A",
+        "slug": "normal",
+        "title": "Trafic normal",
+        "message": "Trafic normal sur l'ensemble de la ligne."
+      },
+      {
+        "line": "3b",
+        "slug": "normal",
+        "title": "Trafic normal",
+        "message": "Trafic normal sur l'ensemble de la ligne."
+      },
+      {
+        "line": "5",
+        "slug": "normal",
+        "title": "Trafic normal",
+        "message": "Trafic normal sur l'ensemble de la ligne."
+      },
+      {
+        "line": "6",
+        "slug": "normal",
+        "title": "Trafic normal",
+        "message": "Trafic normal sur l'ensemble de la ligne."
+      },
+      {
+        "line": "7",
+        "slug": "normal",
+        "title": "Trafic normal",
+        "message": "Trafic normal sur l'ensemble de la ligne."
+      },
+      {
+        "line": "8",
+        "slug": "normal",
+        "title": "Trafic normal",
+        "message": "Trafic normal sur l'ensemble de la ligne."
+      }
+    ]
+  },
+  "_metadata": {
+    "call": "GET /traffic",
+    "date": "2019-06-02T20:18:18+02:00",
+    "version": 4
+  }
 }
 ```
 
 # Feedback
 
 You can [create an issue](https://github.com/pgrimaud/horaires-ratp-api/issues) if needed or contact me on [Twitter](https://twitter.com/pgrimaud_).
-
-# Important information (2017-06-16)
-### API v2 has been brutally takedown for legal reasons. You must upgrade to v3 as soon as possible. Sorry for inconvenience.
 
 # License
 

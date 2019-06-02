@@ -58,7 +58,7 @@ Quelques exemples sont disponibles ici :
 
 *Exemple JSON :*
 
-    GET https://api-ratp.pierre-grimaud.fr/v4/stations/metros/3B
+    GET https://api-ratp.pierre-grimaud.fr/v4/stations/metros/3b
 
 ```json
 {
@@ -83,7 +83,7 @@ Quelques exemples sont disponibles ici :
         ]
     },
     "_metadata": {
-        "call": "GET /stations/metros/3B",
+        "call": "GET /stations/metros/3b",
         "date": "2019-06-02T20:07:24+02:00",
         "version": 4
     }
@@ -92,37 +92,37 @@ Quelques exemples sont disponibles ici :
 
 *Exemple XML:*
 
-    GET https://api-ratp.pierre-grimaud.fr/v4/stations/metros/3B
+    GET https://api-ratp.pierre-grimaud.fr/v4/stations/metros/3b
     
-```xml    
+```xml
 <?xml version="1.0" encoding="UTF-8"?>
-  <response>
-    <result>
-      <stations>
-        <entry>
-          <name><![CDATA[Porte des Lilas]]></name>
-          <slug><![CDATA[porte+des+lilas]]></slug>
-        </entry>
-        <entry>
-          <name><![CDATA[Saint-Fargeau]]></name>
-          <slug><![CDATA[saint+fargeau]]></slug>
-        </entry>
-        <entry>
-          <name><![CDATA[Pelleport]]></name>
-          <slug><![CDATA[pelleport]]></slug>
-        </entry>
-        <entry>
-          <name><![CDATA[Gambetta]]></name>
-          <slug><![CDATA[gambetta]]></slug>
-        </entry>
-      </stations>
-    </result>
-    <_metadata>
-      <call><![CDATA[GET /stations/metros/3B]]></call>
-      <date><![CDATA[2019-06-02T20:14:41+02:00]]></date>
-      <version>4</version>
-    </_metadata>
-  </response>
+<response>
+<result>
+  <stations>
+    <entry>
+      <name><![CDATA[Porte des Lilas]]></name>
+      <slug><![CDATA[porte+des+lilas]]></slug>
+    </entry>
+    <entry>
+      <name><![CDATA[Saint-Fargeau]]></name>
+      <slug><![CDATA[saint+fargeau]]></slug>
+    </entry>
+    <entry>
+      <name><![CDATA[Pelleport]]></name>
+      <slug><![CDATA[pelleport]]></slug>
+    </entry>
+    <entry>
+      <name><![CDATA[Gambetta]]></name>
+      <slug><![CDATA[gambetta]]></slug>
+    </entry>
+  </stations>
+</result>
+<_metadata>
+  <call><![CDATA[GET /stations/metros/3b]]></call>
+  <date><![CDATA[2019-06-02T20:14:41+02:00]]></date>
+  <version>4</version>
+</_metadata>
+</response>
 ```
 
 # Exemples de requêtes
@@ -258,9 +258,9 @@ Exemple de requête pour récupérer toutes les lignes du métro :
 
 ## Stations
 
-Exemple de requête pour récupérer toutes les stations de la ligne 3B du métro : 
+Exemple de requête pour récupérer toutes les stations de la ligne 3b du métro : 
 
-    GET https://api-ratp.pierre-grimaud.fr/v4/stations/metros/3B
+    GET https://api-ratp.pierre-grimaud.fr/v4/stations/metros/3b
 
 ```json
 {
@@ -285,7 +285,7 @@ Exemple de requête pour récupérer toutes les stations de la ligne 3B du métr
         ]
     },
     "_metadata": {
-        "call": "GET /stations/metros/3B",
+        "call": "GET /stations/metros/3b",
         "date": "2019-06-02T20:07:24+02:00",
         "version": 4
     }
@@ -385,7 +385,7 @@ Exemple de requête pour récupérer tout le trafic du réseau RATP :
         "message": "Trafic normal sur l'ensemble de la ligne."
       },
       {
-        "line": "3B",
+        "line": "3b",
         "slug": "normal",
         "title": "Trafic normal",
         "message": "Trafic normal sur l'ensemble de la ligne."
@@ -515,7 +515,7 @@ Exemple de requête pour récupérer tout le trafic du réseau RATP :
         "message": "Trafic normal sur l'ensemble de la ligne."
       },
       {
-        "line": "3B",
+        "line": "3b",
         "slug": "normal",
         "title": "Trafic normal",
         "message": "Trafic normal sur l'ensemble de la ligne."
