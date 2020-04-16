@@ -22,4 +22,4 @@ Ce qui affichera les horaires des prochains trains du **RER B** en direction de 
 
 ## Données
 
-Pour obtenir les informations d'une autre ligne de transport, d'une autre station ou d'une autre direction, consulter la documention de l'API  [horaires-ratp-api](http://github.com/pgrimaud/horaires-ratp-api).
+Pour obtenir les informations d'une autre ligne de transport, d'une autre station ou d'une autre direction, consulter la documentation de l'API  [horaires-ratp-api](http://github.com/pgrimaud/horaires-ratp-api).
